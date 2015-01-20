@@ -21,139 +21,139 @@ public class Produto
     public String listaProdutos()
     {
         String pesquisaProduto = "SELECT fornecedor.fornecedorID, fornecedor.fornNomeFantasia, tipoproduto.tipoprodutoID, tipoproduto.tipo, produto.* ";
-        pesquisaProduto = pesquisaProduto + "FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ";
-        pesquisaProduto = pesquisaProduto + "INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ";
-        pesquisaProduto = pesquisaProduto + "ORDER BY produto.nome ASC";
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("ORDER BY produto.nome ASC").toString();
         return pesquisaProduto;
     }
 
     public String listaProdutosAtivos()
     {
         String pesquisaProduto = "SELECT fornecedor.fornecedorID, fornecedor.fornNomeFantasia, tipoproduto.tipoprodutoID, tipoproduto.tipo, produto.* ";
-        pesquisaProduto = pesquisaProduto + "FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ";
-        pesquisaProduto = pesquisaProduto + "INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ";
-        pesquisaProduto = pesquisaProduto + "WHERE produtoAtivo = 'S' ";
-        pesquisaProduto = pesquisaProduto + "ORDER BY produto.nome ASC";
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("WHERE produtoAtivo = 'S' ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("ORDER BY produto.nome ASC").toString();
         return pesquisaProduto;
     }
 
     public String listaProdutosPorID()
     {
         String pesquisaProduto = "SELECT fornecedor.fornecedorID, fornecedor.fornNomeFantasia, tipoproduto.tipoprodutoID, tipoproduto.tipo, produto.* ";
-        pesquisaProduto = pesquisaProduto + "FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ";
-        pesquisaProduto = pesquisaProduto + "INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID WHERE produto.produtoID = '" + produtoID + "' ";
-        pesquisaProduto = pesquisaProduto + "ORDER BY produto.nome ASC";
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID WHERE produto.produtoID = '").append(produtoID).append("' ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("ORDER BY produto.nome ASC").toString();
         return pesquisaProduto;
     }
 
     public String pesquisaProdutoPorCodigo(String cod)
     {
         String pesquisaProduto = "SELECT fornecedor.fornecedorID, fornecedor.fornNomeFantasia, tipoproduto.tipoprodutoID, tipoproduto.tipo, produto.* ";
-        pesquisaProduto = pesquisaProduto + "FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ";
-        pesquisaProduto = pesquisaProduto + "INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ";
-        pesquisaProduto = pesquisaProduto + " WHERE produto.codigo = '" + cod + "' ORDER BY produto.nome ASC";
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append(" WHERE produto.codigo = '").append(cod).append("' ORDER BY produto.nome ASC").toString();
         return pesquisaProduto;
     }
 
     public String pesquisaProdutos(String keyWord)
     {
         String pesquisaProduto = "SELECT fornecedor.fornecedorID, fornecedor.fornNomeFantasia, tipoproduto.tipoprodutoID, tipoproduto.tipo, produto.* ";
-        pesquisaProduto = pesquisaProduto + "FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ";
-        pesquisaProduto = pesquisaProduto + "INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ";
-        pesquisaProduto = pesquisaProduto + " WHERE nome LIKE '%" + keyWord + "%' ORDER BY produto.nome ASC";
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append(" WHERE nome LIKE '%").append(keyWord).append("%' ORDER BY produto.nome ASC").toString();
         return pesquisaProduto;
     }
 
     public String produtoPorFT()
     {
         String pesquisaProduto = "SELECT fornecedor.fornecedorID, fornecedor.fornNomeFantasia, tipoproduto.tipoprodutoID, tipoproduto.tipo, produto.* ";
-        pesquisaProduto = pesquisaProduto + "FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ";
-        pesquisaProduto = pesquisaProduto + "INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ";
-        pesquisaProduto = pesquisaProduto + "WHERE produto.fornecedorID = '" + fornecedor.fornecedorID + "' ";
-        pesquisaProduto = pesquisaProduto + "AND produto.tipoprodutoID = '" + tipo.tipoProdutoID + "' ";
-        pesquisaProduto = pesquisaProduto + "ORDER BY produto.nome ASC";
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("WHERE produto.fornecedorID = '").append(fornecedor.fornecedorID).append("' ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("AND produto.tipoprodutoID = '").append(tipo.tipoProdutoID).append("' ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("ORDER BY produto.nome ASC").toString();
         return pesquisaProduto;
     }
 
     public String produtoPorF()
     {
         String pesquisaProduto = "SELECT fornecedor.fornecedorID, fornecedor.fornNomeFantasia, tipoproduto.tipoprodutoID, tipoproduto.tipo, produto.* ";
-        pesquisaProduto = pesquisaProduto + "FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ";
-        pesquisaProduto = pesquisaProduto + "INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ";
-        pesquisaProduto = pesquisaProduto + "WHERE produto.fornecedorID = '" + fornecedor.fornecedorID + "' ";
-        pesquisaProduto = pesquisaProduto + "ORDER BY produto.nome ASC";
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("WHERE produto.fornecedorID = '").append(fornecedor.fornecedorID).append("' ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("ORDER BY produto.nome ASC").toString();
         return pesquisaProduto;
     }
 
     public String produtoPorT()
     {
         String pesquisaProduto = "SELECT fornecedor.fornecedorID, fornecedor.fornNomeFantasia, tipoproduto.tipoprodutoID, tipoproduto.tipo, produto.* ";
-        pesquisaProduto = pesquisaProduto + "FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ";
-        pesquisaProduto = pesquisaProduto + "INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ";
-        pesquisaProduto = pesquisaProduto + "WHERE produto.tipoprodutoID = '" + tipo.tipoProdutoID + "' ";
-        pesquisaProduto = pesquisaProduto + "ORDER BY produto.nome ASC";
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("FROM produto INNER JOIN fornecedor ON fornecedor.fornecedorID = produto.fornecedorID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("WHERE produto.tipoprodutoID = '").append(tipo.tipoProdutoID).append("' ").toString();
+        pesquisaProduto = (new StringBuilder(String.valueOf(pesquisaProduto))).append("ORDER BY produto.nome ASC").toString();
         return pesquisaProduto;
     }
 
     public String produtoNome()
     {
-        return "SELECT * FROM produto WHERE nome = '" + nome + "'";
+        return (new StringBuilder("SELECT * FROM produto WHERE nome = '")).append(nome).append("'").toString();
     }
 
     public String produtoNomeEditar()
     {
-        return "SELECT * FROM produto WHERE nome = '" + nome + "' AND produtoID <> '" + produtoID + "'";
+        return (new StringBuilder("SELECT * FROM produto WHERE nome = '")).append(nome).append("' AND produtoID <> '").append(produtoID).append("'").toString();
     }
 
     public String produtoCodigo()
     {
-        return "SELECT * FROM produto WHERE codigo = '" + codigo + "'";
+        return (new StringBuilder("SELECT * FROM produto WHERE codigo = '")).append(codigo).append("'").toString();
     }
 
     public String produtoCodigoEditar()
     {
-        return "SELECT * FROM produto WHERE codigo = '" + codigo + "' AND produtoID <> '" + produtoID + "'";
+        return (new StringBuilder("SELECT * FROM produto WHERE codigo = '")).append(codigo).append("' AND produtoID <> '").append(produtoID).append("'").toString();
     }
 
     public String produtoPorFornecedor(String fornID)
     {
-        return "SELECT * FROM produto WHERE fornecedorID = '" + fornID + "' ORDER BY nome ASC";
+        return (new StringBuilder("SELECT * FROM produto WHERE fornecedorID = '")).append(fornID).append("' ORDER BY nome ASC").toString();
     }
 
     public String salvaProduto()
     {
         String salvaProd = "INSERT INTO produto ";
-        salvaProd = salvaProd + "(tipoprodutoID, fornecedorID, nome, codigo, unidade, precoCusto, preco, estoqueminimo, estoque, lucro) VALUES";
-        salvaProd = salvaProd + "('" + tipo.tipoProdutoID + "', '" + fornecedor.fornecedorID + "', '" + nome + "', '" + codigo + "', '" + unidade + "', '" + precoCusto + "', '" + preco + "', '" + estoqueMinimo + "', '" + estoque + "', '" + lucro + "' ) ";
+        salvaProd = (new StringBuilder(String.valueOf(salvaProd))).append("(tipoprodutoID, fornecedorID, nome, codigo, unidade, precoCusto, preco, estoqueminimo, estoque, lucro) VALUES").toString();
+        salvaProd = (new StringBuilder(String.valueOf(salvaProd))).append("('").append(tipo.tipoProdutoID).append("', '").append(fornecedor.fornecedorID).append("', '").append(nome).append("', '").append(codigo).append("', '").append(unidade).append("', '").append(precoCusto).append("', '").append(preco).append("', '").append(estoqueMinimo).append("', '").append(estoque).append("', '").append(lucro).append("' ) ").toString();
         return salvaProd;
     }
 
     public String alteraProduto()
     {
         String alterProd = "UPDATE produto SET ";
-        alterProd = alterProd + "tipoprodutoID = '" + tipo.tipoProdutoID + "', fornecedorID = '" + fornecedor.fornecedorID + "', nome = '" + nome + "', codigo = '" + codigo + "', ";
-        alterProd = alterProd + "unidade = '" + unidade + "', precoCusto = '" + precoCusto + "', preco = '" + preco + "', estoqueminimo = '" + estoqueMinimo + "', ";
-        alterProd = alterProd + "estoque = '" + estoque + "', lucro = '" + lucro + "' ";
-        alterProd = alterProd + "WHERE produtoID = '" + produtoID + "'";
+        alterProd = (new StringBuilder(String.valueOf(alterProd))).append("tipoprodutoID = '").append(tipo.tipoProdutoID).append("', fornecedorID = '").append(fornecedor.fornecedorID).append("', nome = '").append(nome).append("', codigo = '").append(codigo).append("', ").toString();
+        alterProd = (new StringBuilder(String.valueOf(alterProd))).append("unidade = '").append(unidade).append("', precoCusto = '").append(precoCusto).append("', preco = '").append(preco).append("', estoqueminimo = '").append(estoqueMinimo).append("', ").toString();
+        alterProd = (new StringBuilder(String.valueOf(alterProd))).append("estoque = '").append(estoque).append("', lucro = '").append(lucro).append("' ").toString();
+        alterProd = (new StringBuilder(String.valueOf(alterProd))).append("WHERE produtoID = '").append(produtoID).append("'").toString();
         return alterProd;
     }
 
     public String alteraEstoqueProduto()
     {
-        return "UPDATE produto SET estoque = '" + estoque + "' WHERE produtoID = '" + produtoID + "'";
+        return (new StringBuilder("UPDATE produto SET estoque = '")).append(estoque).append("' WHERE produtoID = '").append(produtoID).append("'").toString();
     }
 
     public String excluiProduto()
     {
-        return "DELETE FROM produto WHERE produtoID = '" + produtoID + "'";
+        return (new StringBuilder("DELETE FROM produto WHERE produtoID = '")).append(produtoID).append("'").toString();
     }
 
     public String statusProduto(int numeroAcao)
     {
         if(numeroAcao == 1)
-            return "UPDATE produto SET produtoAtivo = 'N' WHERE produtoID = '" + produtoID + "'";
+            return (new StringBuilder("UPDATE produto SET produtoAtivo = 'N' WHERE produtoID = '")).append(produtoID).append("'").toString();
         if(numeroAcao == 2)
-            return "UPDATE produto SET produtoAtivo = 'S' WHERE produtoID = '" + produtoID + "'";
+            return (new StringBuilder("UPDATE produto SET produtoAtivo = 'S' WHERE produtoID = '")).append(produtoID).append("'").toString();
         else
             return null;
     }

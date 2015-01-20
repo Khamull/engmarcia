@@ -20,7 +20,7 @@ public class Datas
         int d = hoje.get(5);
         String dia = String.valueOf(d);
         if(dia.length() < 2)
-            dia = "0" + dia;
+            dia = (new StringBuilder("0")).append(dia).toString();
         return dia;
     }
 
@@ -29,7 +29,7 @@ public class Datas
         int m = hoje.get(2);
         String mes = String.valueOf(1 + m);
         if(mes.length() < 2)
-            mes = "0" + mes;
+            mes = (new StringBuilder("0")).append(mes).toString();
         return mes;
     }
 
@@ -45,7 +45,7 @@ public class Datas
         String dia = diaAtual();
         String mes = mesAtual();
         String ano = anoAtual();
-        String dataHoje = dia + "/" + mes + "/" + ano;
+        String dataHoje = (new StringBuilder(String.valueOf(dia))).append("/").append(mes).append("/").append(ano).toString();
         return dataHoje;
     }
 
@@ -53,7 +53,7 @@ public class Datas
     {
         String a[] = new String[3];
         a = dataSimples.split("/");
-        String dataFormatada = a[2] + "-" + a[1] + "-" + a[0];
+        String dataFormatada = (new StringBuilder(String.valueOf(a[2]))).append("-").append(a[1]).append("-").append(a[0]).toString();
         return dataFormatada;
     }
 
@@ -61,7 +61,7 @@ public class Datas
     {
         String a[] = new String[3];
         a = dataSimples.split("-");
-        String dataFormatada = a[2] + "/" + a[1] + "/" + a[0];
+        String dataFormatada = (new StringBuilder(String.valueOf(a[2]))).append("/").append(a[1]).append("/").append(a[0]).toString();
         return dataFormatada;
     }
 
@@ -105,8 +105,8 @@ public class Datas
             ano = String.valueOf(ano1 + 6);
         }
         if(mes.length() < 2)
-            mes = "0" + mes;
-        String dataFormatada = ano + "-" + mes + "-" + dia;
+            mes = (new StringBuilder("0")).append(mes).toString();
+        String dataFormatada = (new StringBuilder(String.valueOf(ano))).append("-").append(mes).append("-").append(dia).toString();
         return dataFormatada;
     }
 
@@ -156,31 +156,31 @@ public class Datas
     public String verificaSeExiste(int dia, int mes)
     {
         if(dia >= 28 && mes == 2)
-            return "28-" + mes;
+            return (new StringBuilder("28-")).append(mes).toString();
         if(dia >= 30 && mes == 4 || dia >= 30 && mes == 6 || dia >= 30 && mes == 9 || dia >= 30 && mes == 11)
-            return "30-" + mes;
+            return (new StringBuilder("30-")).append(mes).toString();
         if(dia >= 28 && mes == 14)
-            return "28-" + mes;
+            return (new StringBuilder("28-")).append(mes).toString();
         if(dia >= 30 && mes == 16 || dia >= 30 && mes == 18 || dia >= 30 && mes == 21 || dia >= 30 && mes == 23)
-            return "30-" + mes;
+            return (new StringBuilder("30-")).append(mes).toString();
         if(dia >= 28 && mes == 26)
-            return "28-" + mes;
+            return (new StringBuilder("28-")).append(mes).toString();
         if(dia >= 30 && mes == 28 || dia >= 30 && mes == 30 || dia >= 30 && mes == 33 || dia >= 30 && mes == 35)
-            return "30-" + mes;
+            return (new StringBuilder("30-")).append(mes).toString();
         if(dia >= 28 && mes == 38)
-            return "28-" + mes;
+            return (new StringBuilder("28-")).append(mes).toString();
         if(dia >= 30 && mes == 40 || dia >= 30 && mes == 42 || dia >= 30 && mes == 45 || dia >= 30 && mes == 47)
-            return "30-" + mes;
+            return (new StringBuilder("30-")).append(mes).toString();
         if(dia >= 28 && mes == 50)
-            return "28-" + mes;
+            return (new StringBuilder("28-")).append(mes).toString();
         if(dia >= 30 && mes == 52 || dia >= 30 && mes == 54 || dia >= 30 && mes == 37 || dia >= 30 && mes == 59)
-            return "30-" + mes;
+            return (new StringBuilder("30-")).append(mes).toString();
         if(dia >= 28 && mes == 62)
-            return "28-" + mes;
+            return (new StringBuilder("28-")).append(mes).toString();
         if(dia >= 30 && mes == 64 || dia >= 30 && mes == 66 || dia >= 30 && mes == 69 || dia >= 30 && mes == 71)
-            return "30-" + mes;
+            return (new StringBuilder("30-")).append(mes).toString();
         else
-            return dia + "-" + mes;
+            return (new StringBuilder(String.valueOf(dia))).append("-").append(mes).toString();
     }
 
     public String verificaDataVencimento(String dataSimples)
@@ -210,7 +210,7 @@ public class Datas
         int d = hoje.get(5);
         int m = hoje.get(2);
         int a = hoje.get(1);
-        String data = String.valueOf(a) + "-" + String.valueOf(m + 1) + "-" + String.valueOf(d);
+        String data = (new StringBuilder(String.valueOf(String.valueOf(a)))).append("-").append(String.valueOf(m + 1)).append("-").append(String.valueOf(d)).toString();
         return data;
     }
 
@@ -226,7 +226,7 @@ public class Datas
         int d = hoje.get(5);
         int m = hoje.get(2);
         int aa = hoje.get(1);
-        String data = String.valueOf(aa) + "-" + String.valueOf(m + 1) + "-" + String.valueOf(d);
+        String data = (new StringBuilder(String.valueOf(String.valueOf(aa)))).append("-").append(String.valueOf(m + 1)).append("-").append(String.valueOf(d)).toString();
         return data;
     }
 

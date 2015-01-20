@@ -21,44 +21,44 @@ public class OrcamentoItem
 
     public String pesquisItem()
     {
-        return "SELECT * FROM orcamentoitem WHERE itemID = '" + itemID + "'";
+        return (new StringBuilder("SELECT * FROM orcamentoitem WHERE itemID = '")).append(itemID).append("'").toString();
     }
 
     public String listaItensPorID()
     {
         String pesquisaItem = "SELECT produto.produtoID, produto.tipoprodutoID, produto.codigo, produto.nome, produto.unidade, ";
-        pesquisaItem = pesquisaItem + "tipoproduto.tipoprodutoID, tipoproduto.tipo, ";
-        pesquisaItem = pesquisaItem + "orcamentoitem.* ";
-        pesquisaItem = pesquisaItem + "FROM orcamentoitem ";
-        pesquisaItem = pesquisaItem + "INNER JOIN produto ON produto.produtoID = orcamentoitem.produtoID ";
-        pesquisaItem = pesquisaItem + "INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ";
-        pesquisaItem = pesquisaItem + "WHERE orcamentoitem.orcamentoID = '" + orcamento.orcamentoID + "' ";
-        pesquisaItem = pesquisaItem + "ORDER BY orcamentoitem.itemID DESC";
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("tipoproduto.tipoprodutoID, tipoproduto.tipo, ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("orcamentoitem.* ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("FROM orcamentoitem ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("INNER JOIN produto ON produto.produtoID = orcamentoitem.produtoID ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("INNER JOIN tipoproduto ON tipoproduto.tipoprodutoID = produto.tipoprodutoID ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("WHERE orcamentoitem.orcamentoID = '").append(orcamento.orcamentoID).append("' ").toString();
+        pesquisaItem = (new StringBuilder(String.valueOf(pesquisaItem))).append("ORDER BY orcamentoitem.itemID DESC").toString();
         return pesquisaItem;
     }
 
     public String salvaItem()
     {
         String salvaItem = "INSERT INTO orcamentoitem ";
-        salvaItem = salvaItem + "(orcamentoID, produtoID, quantidade, valor, total) ";
-        salvaItem = salvaItem + "VALUES ";
-        salvaItem = salvaItem + "('" + orcamento.orcamentoID + "', '" + produto.produtoID + "', '" + quantidade + "', '" + produto.preco + "', '" + total + "')";
+        salvaItem = (new StringBuilder(String.valueOf(salvaItem))).append("(orcamentoID, produtoID, quantidade, valor, total) ").toString();
+        salvaItem = (new StringBuilder(String.valueOf(salvaItem))).append("VALUES ").toString();
+        salvaItem = (new StringBuilder(String.valueOf(salvaItem))).append("('").append(orcamento.orcamentoID).append("', '").append(produto.produtoID).append("', '").append(quantidade).append("', '").append(produto.preco).append("', '").append(total).append("')").toString();
         return salvaItem;
     }
 
     public String excluiItem()
     {
-        return "DELETE FROM orcamentoitem WHERE itemID = '" + itemID + "'";
+        return (new StringBuilder("DELETE FROM orcamentoitem WHERE itemID = '")).append(itemID).append("'").toString();
     }
 
     public String removeItens()
     {
-        return "DELETE FROM orcamentoitem WHERE orcamentoID = '" + orcamento.orcamentoID + "'";
+        return (new StringBuilder("DELETE FROM orcamentoitem WHERE orcamentoID = '")).append(orcamento.orcamentoID).append("'").toString();
     }
 
     public String totalItem()
     {
-        return "SELECT SUM(total) as subtotal FROM orcamentoitem WHERE orcamentoID = '" + orcamento.orcamentoID + "'";
+        return (new StringBuilder("SELECT SUM(total) as subtotal FROM orcamentoitem WHERE orcamentoID = '")).append(orcamento.orcamentoID).append("'").toString();
     }
 
     public int itemID;

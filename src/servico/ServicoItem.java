@@ -19,24 +19,24 @@ public class ServicoItem
 
     public String listaItens()
     {
-        return "SELECT * FROM servicoitem WHERE servicoID = '" + servico.servicoID + "'";
+        return (new StringBuilder("SELECT * FROM servicoitem WHERE servicoID = '")).append(servico.servicoID).append("'").toString();
     }
 
     public String pesquisaItem()
     {
-        return "SELECT * FROM servicoitem WHERE servicoitemID = '" + servicoItemID + "'";
+        return (new StringBuilder("SELECT * FROM servicoitem WHERE servicoitemID = '")).append(servicoItemID).append("'").toString();
     }
 
     public String salvaItem()
     {
         String salvaItem = "INSERT INTO servicoitem (servicoID, descricao, valor) VALUES ";
-        salvaItem = salvaItem + "('" + servico.servicoID + "', '" + descricao + "', '" + valor + "')";
+        salvaItem = (new StringBuilder(String.valueOf(salvaItem))).append("('").append(servico.servicoID).append("', '").append(descricao).append("', '").append(valor).append("')").toString();
         return salvaItem;
     }
 
     public String excluiItem()
     {
-        return "DELETE FROM servicoitem WHERE servicoitemID = '" + servicoItemID + "'";
+        return (new StringBuilder("DELETE FROM servicoitem WHERE servicoitemID = '")).append(servicoItemID).append("'").toString();
     }
 
     public int servicoItemID;

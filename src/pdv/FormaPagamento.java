@@ -20,7 +20,7 @@ public class FormaPagamento
 
     public String formaPorID()
     {
-        return "SELECT * FROM formapagamento WHERE formID = '" + formPagID + "'";
+        return (new StringBuilder("SELECT * FROM formapagamento WHERE formID = '")).append(formPagID).append("'").toString();
     }
 
     public int formPagID;

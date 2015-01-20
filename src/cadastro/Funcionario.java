@@ -30,72 +30,72 @@ public class Funcionario
 
     public String pesquisaFuncionario(String keyWord)
     {
-        return "SELECT * FROM funcionario WHERE funcionarioAtivo = 'S' AND funcionarioNome LIKE '%" + keyWord + "%' ORDER BY funcionarioID DESC";
+        return (new StringBuilder("SELECT * FROM funcionario WHERE funcionarioAtivo = 'S' AND funcionarioNome LIKE '%")).append(keyWord).append("%' ORDER BY funcionarioID DESC").toString();
     }
 
     public String listaFuncionariosOrdenados()
     {
         String dadosFunc = "SELECT cargo.cargoID, cargo.cargoTitulo, funcionario.* FROM funcionario ";
-        dadosFunc = dadosFunc + "INNER JOIN cargo ON cargo.cargoID = funcionario.cargoID ";
-        dadosFunc = dadosFunc + "WHERE funcionario.funcionarioAtivo = 'S' ORDER BY funcionario.funcionarioNome ASC";
+        dadosFunc = (new StringBuilder(String.valueOf(dadosFunc))).append("INNER JOIN cargo ON cargo.cargoID = funcionario.cargoID ").toString();
+        dadosFunc = (new StringBuilder(String.valueOf(dadosFunc))).append("WHERE funcionario.funcionarioAtivo = 'S' ORDER BY funcionario.funcionarioNome ASC").toString();
         return dadosFunc;
     }
 
     public String funcionarioPorId()
     {
         String dadosFunc = "SELECT cargo.cargoID, cargo.cargoTitulo, funcionario.* FROM funcionario ";
-        dadosFunc = dadosFunc + "INNER JOIN cargo ON cargo.cargoID = funcionario.cargoID ";
-        dadosFunc = dadosFunc + "WHERE funcionario.funcionarioID = '" + funcionarioID + "'";
+        dadosFunc = (new StringBuilder(String.valueOf(dadosFunc))).append("INNER JOIN cargo ON cargo.cargoID = funcionario.cargoID ").toString();
+        dadosFunc = (new StringBuilder(String.valueOf(dadosFunc))).append("WHERE funcionario.funcionarioID = '").append(funcionarioID).append("'").toString();
         return dadosFunc;
     }
 
     public String salvarFuncionario()
     {
         String salvaFuncionario = "INSERT INTO funcionario ";
-        salvaFuncionario = salvaFuncionario + "(funcionarioNome, cargoID, funcionarioNascimento, funcionarioRg, ";
-        salvaFuncionario = salvaFuncionario + "funcionarioCpf, funcionarioEndereco, funcionarioNumero, funcionarioBairro, ";
-        salvaFuncionario = salvaFuncionario + "funcionarioCep, funcionarioCidade, funcionarioUf, funcionarioComplemento, ";
-        salvaFuncionario = salvaFuncionario + "funcionarioTelefone, funcionarioCelular, operadoraCelular, funcionarioEmail, ";
-        salvaFuncionario = salvaFuncionario + "funcionarioUsuario, empresaID) VALUES ";
-        salvaFuncionario = salvaFuncionario + "('" + nome + "', '" + cargo + "', '" + nascimento + "', '" + rg + "', '" + cpf + "', '" + endereco.logradouro + "', ";
-        salvaFuncionario = salvaFuncionario + "'" + endereco.numero + "', '" + endereco.bairro + "', '" + endereco.cep + "', ";
-        salvaFuncionario = salvaFuncionario + "'" + endereco.cidade + "', '" + endereco.uf + "', '" + endereco.complemento + "', ";
-        salvaFuncionario = salvaFuncionario + "'" + telefone + "', '" + celular + "', '" + operadoraCelular + "', '" + email + "', '" + funcionarioUsuario + "', '" + empresa.empresaID + "')";
+        salvaFuncionario = (new StringBuilder(String.valueOf(salvaFuncionario))).append("(funcionarioNome, cargoID, funcionarioNascimento, funcionarioRg, ").toString();
+        salvaFuncionario = (new StringBuilder(String.valueOf(salvaFuncionario))).append("funcionarioCpf, funcionarioEndereco, funcionarioNumero, funcionarioBairro, ").toString();
+        salvaFuncionario = (new StringBuilder(String.valueOf(salvaFuncionario))).append("funcionarioCep, funcionarioCidade, funcionarioUf, funcionarioComplemento, ").toString();
+        salvaFuncionario = (new StringBuilder(String.valueOf(salvaFuncionario))).append("funcionarioTelefone, funcionarioCelular, operadoraCelular, funcionarioEmail, ").toString();
+        salvaFuncionario = (new StringBuilder(String.valueOf(salvaFuncionario))).append("funcionarioUsuario, empresaID) VALUES ").toString();
+        salvaFuncionario = (new StringBuilder(String.valueOf(salvaFuncionario))).append("('").append(nome).append("', '").append(cargo).append("', '").append(nascimento).append("', '").append(rg).append("', '").append(cpf).append("', '").append(endereco.logradouro).append("', ").toString();
+        salvaFuncionario = (new StringBuilder(String.valueOf(salvaFuncionario))).append("'").append(endereco.numero).append("', '").append(endereco.bairro).append("', '").append(endereco.cep).append("', ").toString();
+        salvaFuncionario = (new StringBuilder(String.valueOf(salvaFuncionario))).append("'").append(endereco.cidade).append("', '").append(endereco.uf).append("', '").append(endereco.complemento).append("', ").toString();
+        salvaFuncionario = (new StringBuilder(String.valueOf(salvaFuncionario))).append("'").append(telefone).append("', '").append(celular).append("', '").append(operadoraCelular).append("', '").append(email).append("', '").append(funcionarioUsuario).append("', '").append(empresa.empresaID).append("')").toString();
         return salvaFuncionario;
     }
 
     public String alterarFuncionario()
     {
-        String alteraFunc = "UPDATE funcionario SET cargoID = '" + cargo + "', funcionarioNome = '" + nome + "', funcionarioNascimento = '" + nascimento + "', ";
-        alteraFunc = alteraFunc + "funcionarioRg = '" + rg + "', funcionarioCpf = '" + cpf + "', funcionarioEndereco = '" + endereco.logradouro + "', ";
-        alteraFunc = alteraFunc + "funcionarioNumero = '" + endereco.numero + "', funcionarioBairro = '" + endereco.bairro + "', funcionarioCep = '" + endereco.cep + "', ";
-        alteraFunc = alteraFunc + "funcionarioCidade = '" + endereco.cidade + "', funcionarioUf = '" + endereco.uf + "', funcionarioComplemento = '" + endereco.complemento + "', ";
-        alteraFunc = alteraFunc + "funcionarioTelefone = '" + telefone + "', funcionarioCelular = '" + celular + "', operadoraCelular = '" + operadoraCelular + "', ";
-        alteraFunc = alteraFunc + "funcionarioEmail = '" + email + "' WHERE funcionarioID = '" + funcionarioID + "'";
+        String alteraFunc = (new StringBuilder("UPDATE funcionario SET cargoID = '")).append(cargo).append("', funcionarioNome = '").append(nome).append("', funcionarioNascimento = '").append(nascimento).append("', ").toString();
+        alteraFunc = (new StringBuilder(String.valueOf(alteraFunc))).append("funcionarioRg = '").append(rg).append("', funcionarioCpf = '").append(cpf).append("', funcionarioEndereco = '").append(endereco.logradouro).append("', ").toString();
+        alteraFunc = (new StringBuilder(String.valueOf(alteraFunc))).append("funcionarioNumero = '").append(endereco.numero).append("', funcionarioBairro = '").append(endereco.bairro).append("', funcionarioCep = '").append(endereco.cep).append("', ").toString();
+        alteraFunc = (new StringBuilder(String.valueOf(alteraFunc))).append("funcionarioCidade = '").append(endereco.cidade).append("', funcionarioUf = '").append(endereco.uf).append("', funcionarioComplemento = '").append(endereco.complemento).append("', ").toString();
+        alteraFunc = (new StringBuilder(String.valueOf(alteraFunc))).append("funcionarioTelefone = '").append(telefone).append("', funcionarioCelular = '").append(celular).append("', operadoraCelular = '").append(operadoraCelular).append("', ").toString();
+        alteraFunc = (new StringBuilder(String.valueOf(alteraFunc))).append("funcionarioEmail = '").append(email).append("' WHERE funcionarioID = '").append(funcionarioID).append("'").toString();
         return alteraFunc;
     }
 
     public String excluirFuncionario()
     {
-        return "DELETE FROM funcionario WHERE funcionarioID = '" + funcionarioID + "'";
+        return (new StringBuilder("DELETE FROM funcionario WHERE funcionarioID = '")).append(funcionarioID).append("'").toString();
     }
 
     public String verificaCpf()
     {
-        return "SELECT * FROM funcionario WHERE funcionarioCpf = '" + cpf + "'";
+        return (new StringBuilder("SELECT * FROM funcionario WHERE funcionarioCpf = '")).append(cpf).append("'").toString();
     }
 
     public String verificaCpfAlterar()
     {
-        return "SELECT * FROM funcionario WHERE funcionarioCpf = '" + cpf + "' AND funcionarioID <> '" + funcionarioID + "'";
+        return (new StringBuilder("SELECT * FROM funcionario WHERE funcionarioCpf = '")).append(cpf).append("' AND funcionarioID <> '").append(funcionarioID).append("'").toString();
     }
 
     public String statusFuncionario(int numeroAcao)
     {
         if(numeroAcao == 1)
-            return "UPDATE funcionario SET funcionarioAtivo = 'N' WHERE funcionarioID = '" + funcionarioID + "'";
+            return (new StringBuilder("UPDATE funcionario SET funcionarioAtivo = 'N' WHERE funcionarioID = '")).append(funcionarioID).append("'").toString();
         if(numeroAcao == 2)
-            return "UPDATE funcionario SET funcionarioAtivo = 'S' WHERE funcionarioID = '" + funcionarioID + "'";
+            return (new StringBuilder("UPDATE funcionario SET funcionarioAtivo = 'S' WHERE funcionarioID = '")).append(funcionarioID).append("'").toString();
         else
             return null;
     }

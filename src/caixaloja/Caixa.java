@@ -19,51 +19,51 @@ public class Caixa
 
     public String verificaCaixa()
     {
-        return "SELECT * FROM caixa WHERE status = 'A' and usuario = '" + usuario.login + "'";
+        return (new StringBuilder("SELECT * FROM caixa WHERE status = 'A' and usuario = '")).append(usuario.login).append("'").toString();
     }
 
     public String caixaPorID()
     {
-        return "SELECT * FROM caixa WHERE caixaID = '" + caixaID + "'";
+        return (new StringBuilder("SELECT * FROM caixa WHERE caixaID = '")).append(caixaID).append("'").toString();
     }
 
     public String abreCaixa()
     {
         String cadastra = "INSERT INTO caixa ";
-        cadastra = cadastra + "(usuario, funcionario, valorInicial, valorFinal, vendaInicial, vendaFinal, lancamentoInicial, lancamentoFinal, ";
-        cadastra = cadastra + "retiradaInicial, retiradaFinal, dataInicio) ";
-        cadastra = cadastra + "VALUES ";
-        cadastra = cadastra + "( '" + usuario.login + "', '" + funcionario.nome + "', '" + valorInicial + "', '0.00', '" + vendaInicial + "', '0', '" + lancamentoInicial + "', '0', ";
-        cadastra = cadastra + "'" + retiradaInicial + "', '0', CURRENT_TIMESTAMP)";
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("(usuario, funcionario, valorInicial, valorFinal, vendaInicial, vendaFinal, lancamentoInicial, lancamentoFinal, ").toString();
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("retiradaInicial, retiradaFinal, dataInicio) ").toString();
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("VALUES ").toString();
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("( '").append(usuario.login).append("', '").append(funcionario.nome).append("', '").append(valorInicial).append("', '0.00', '").append(vendaInicial).append("', '0', '").append(lancamentoInicial).append("', '0', ").toString();
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("'").append(retiradaInicial).append("', '0', CURRENT_TIMESTAMP)").toString();
         return cadastra;
     }
 
     public String fechaCaixa()
     {
         String fechamento = "UPDATE caixa SET ";
-        fechamento = fechamento + "valorFinal = '" + valorFinal + "', vendaFinal = '" + vendaFinal + "', lancamentoFinal = '" + lancamentoFinal + "', ";
-        fechamento = fechamento + "retiradaFinal = '" + retiradaFinal + "', status = 'F' ";
-        fechamento = fechamento + "WHERE caixaID = '" + caixaID + "'";
+        fechamento = (new StringBuilder(String.valueOf(fechamento))).append("valorFinal = '").append(valorFinal).append("', vendaFinal = '").append(vendaFinal).append("', lancamentoFinal = '").append(lancamentoFinal).append("', ").toString();
+        fechamento = (new StringBuilder(String.valueOf(fechamento))).append("retiradaFinal = '").append(retiradaFinal).append("', status = 'F' ").toString();
+        fechamento = (new StringBuilder(String.valueOf(fechamento))).append("WHERE caixaID = '").append(caixaID).append("'").toString();
         return fechamento;
     }
 
     public String listaFechamentos(String dataInicio, String dataFim)
     {
         String lista = "SELECT funcionario.funcionarioID, funcionario.funcionarioNome, caixa.* ";
-        lista = lista + "FROM caixa ";
-        lista = lista + "INNER JOIN funcionario ON funcionario.funcionarioID = caixa.funcionario ";
-        lista = lista + "WHERE caixa.status = 'F' AND data BETWEEN '" + dataInicio + "' AND '" + dataFim + "' ";
-        lista = lista + "ORDER BY caixa.caixaID DESC";
+        lista = (new StringBuilder(String.valueOf(lista))).append("FROM caixa ").toString();
+        lista = (new StringBuilder(String.valueOf(lista))).append("INNER JOIN funcionario ON funcionario.funcionarioID = caixa.funcionario ").toString();
+        lista = (new StringBuilder(String.valueOf(lista))).append("WHERE caixa.status = 'F' AND data BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("' ").toString();
+        lista = (new StringBuilder(String.valueOf(lista))).append("ORDER BY caixa.caixaID DESC").toString();
         return lista;
     }
 
     public String listaFechamentosPorUsuario(String dataInicio, String dataFim)
     {
         String lista = "SELECT funcionario.funcionarioID, funcionario.funcionarioNome, caixa.* ";
-        lista = lista + "FROM caixa ";
-        lista = lista + "INNER JOIN funcionario ON funcionario.funcionarioID = caixa.funcionario ";
-        lista = lista + "WHERE caixa.status = 'F' AND usuario = '" + usuario.login + "' AND data BETWEEN '" + dataInicio + "' AND '" + dataFim + "' ";
-        lista = lista + "ORDER BY caixa.caixaID DESC";
+        lista = (new StringBuilder(String.valueOf(lista))).append("FROM caixa ").toString();
+        lista = (new StringBuilder(String.valueOf(lista))).append("INNER JOIN funcionario ON funcionario.funcionarioID = caixa.funcionario ").toString();
+        lista = (new StringBuilder(String.valueOf(lista))).append("WHERE caixa.status = 'F' AND usuario = '").append(usuario.login).append("' AND data BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("' ").toString();
+        lista = (new StringBuilder(String.valueOf(lista))).append("ORDER BY caixa.caixaID DESC").toString();
         return lista;
     }
 

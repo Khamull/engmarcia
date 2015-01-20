@@ -25,45 +25,45 @@ public class Cargo
 
     public String pesquisaCargo(String keyWord)
     {
-        return "SELECT * FROM cargo WHERE cargoAtivo = 'S' AND cargoTitulo LIKE '%" + keyWord + "%' ORDER BY cargoTitulo ASC";
+        return (new StringBuilder("SELECT * FROM cargo WHERE cargoAtivo = 'S' AND cargoTitulo LIKE '%")).append(keyWord).append("%' ORDER BY cargoTitulo ASC").toString();
     }
 
     public String cargoPorId()
     {
-        return "SELECT * FROM cargo WHERE cargoID = '" + cargoID + "'";
+        return (new StringBuilder("SELECT * FROM cargo WHERE cargoID = '")).append(cargoID).append("'").toString();
     }
 
     public String verificaCargo()
     {
-        return "SELECT * FROM cargo WHERE cargoTitulo = '" + titulo + "'";
+        return (new StringBuilder("SELECT * FROM cargo WHERE cargoTitulo = '")).append(titulo).append("'").toString();
     }
 
     public String verificaCargoAlterar()
     {
-        return "SELECT * FROM cargo WHERE cargoTitulo = '" + titulo + "' AND cargoID <> '" + cargoID + "'";
+        return (new StringBuilder("SELECT * FROM cargo WHERE cargoTitulo = '")).append(titulo).append("' AND cargoID <> '").append(cargoID).append("'").toString();
     }
 
     public String salvarCargo()
     {
-        return "INSERT INTO cargo (cargoTitulo, cargoDescricao) VALUES ('" + titulo + "', '" + descricao + "')";
+        return (new StringBuilder("INSERT INTO cargo (cargoTitulo, cargoDescricao) VALUES ('")).append(titulo).append("', '").append(descricao).append("')").toString();
     }
 
     public String alteraCargo()
     {
-        return "UPDATE cargo SET cargoTitulo = '" + titulo + "', cargoDescricao = '" + descricao + "' WHERE cargoID = '" + cargoID + "'";
+        return (new StringBuilder("UPDATE cargo SET cargoTitulo = '")).append(titulo).append("', cargoDescricao = '").append(descricao).append("' WHERE cargoID = '").append(cargoID).append("'").toString();
     }
 
     public String excluiCargo()
     {
-        return "DELETE FROM cargo WHERE cargoID = '" + cargoID + "'";
+        return (new StringBuilder("DELETE FROM cargo WHERE cargoID = '")).append(cargoID).append("'").toString();
     }
 
     public String statusCargo(int numeroAcao)
     {
         if(numeroAcao == 1)
-            return "UPDATE cargo SET cargoAtivo = 'N' WHERE cargoID = '" + cargoID + "'";
+            return (new StringBuilder("UPDATE cargo SET cargoAtivo = 'N' WHERE cargoID = '")).append(cargoID).append("'").toString();
         if(numeroAcao == 2)
-            return "UPDATE cargo SET cargoAtivo = 'S' WHERE cargoID = '" + cargoID + "'";
+            return (new StringBuilder("UPDATE cargo SET cargoAtivo = 'S' WHERE cargoID = '")).append(cargoID).append("'").toString();
         else
             return null;
     }

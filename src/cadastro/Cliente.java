@@ -35,78 +35,78 @@ public class Cliente
 
     public String clientePorID()
     {
-        return "SELECT * FROM cliente WHERE clienteID = '" + clienteID + "'";
+        return (new StringBuilder("SELECT * FROM cliente WHERE clienteID = '")).append(clienteID).append("'").toString();
     }
 
     public String pesquisaCliente(String keyWord)
     {
-        return "SELECT * FROM cliente WHERE clienteAtivo = 'S' AND clienteNomeFantasia LIKE '%" + keyWord + "%' ORDER BY clienteID DESC";
+        return (new StringBuilder("SELECT * FROM cliente WHERE clienteAtivo = 'S' AND clienteNomeFantasia LIKE '%")).append(keyWord).append("%' ORDER BY clienteID DESC").toString();
     }
 
     public String verificaCnpj()
     {
-        return "SELECT clienteCnpj FROM cliente WHERE clienteCnpj = '" + cnpj + "'";
+        return (new StringBuilder("SELECT clienteCnpj FROM cliente WHERE clienteCnpj = '")).append(cnpj).append("'").toString();
     }
 
     public String verificaCnpjAlterar()
     {
-        return "SELECT clienteCnpj FROM cliente WHERE clienteCnpj = '" + cnpj + "' AND clienteID <> '" + clienteID + "'";
+        return (new StringBuilder("SELECT clienteCnpj FROM cliente WHERE clienteCnpj = '")).append(cnpj).append("' AND clienteID <> '").append(clienteID).append("'").toString();
     }
 
     public String salvarCliente()
     {
         String salvaCli = "INSERT INTO cliente (tipoPessoa, clienteNomeFantasia, clienteRazaoSocial, clienteCnpj, clienteInscEstadual, ";
-        salvaCli = salvaCli + "clienteInscMunicipal, clienteEndereco, clienteNumero, clienteBairro, clienteCep, clienteCidade, clienteUf, ";
-        salvaCli = salvaCli + "clienteComplemento, clienteContato, clienteTelefone, clienteFax, clienteRadio, clienteCelular, operadoraCelular, ";
-        salvaCli = salvaCli + "clienteEmail, clienteSite, clienteUsuario, limiteCredito) VALUES ('" + tipoPessoa + "', '" + nomeFantasia + "', '" + razaoSocial + "', ";
-        salvaCli = salvaCli + "'" + cnpj + "', '" + inscEstadual + "', '" + inscMunicipal + "', '" + endereco.logradouro + "', '" + endereco.numero + "', ";
-        salvaCli = salvaCli + "'" + endereco.bairro + "', '" + endereco.cep + "', '" + endereco.cidade + "', '" + endereco.uf + "', '" + endereco.complemento + "', ";
-        salvaCli = salvaCli + "'" + contato + "', '" + telefone + "', '" + fax + "', '" + radio + "', '" + celular + "', ";
-        salvaCli = salvaCli + "'" + operadoraCelular + "', '" + email + "', '" + site + "', '" + usuario + "', '" + limiteCredito + "')";
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("clienteInscMunicipal, clienteEndereco, clienteNumero, clienteBairro, clienteCep, clienteCidade, clienteUf, ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("clienteComplemento, clienteContato, clienteTelefone, clienteFax, clienteRadio, clienteCelular, operadoraCelular, ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("clienteEmail, clienteSite, clienteUsuario, limiteCredito) VALUES ('").append(tipoPessoa).append("', '").append(nomeFantasia).append("', '").append(razaoSocial).append("', ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("'").append(cnpj).append("', '").append(inscEstadual).append("', '").append(inscMunicipal).append("', '").append(endereco.logradouro).append("', '").append(endereco.numero).append("', ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("'").append(endereco.bairro).append("', '").append(endereco.cep).append("', '").append(endereco.cidade).append("', '").append(endereco.uf).append("', '").append(endereco.complemento).append("', ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("'").append(contato).append("', '").append(telefone).append("', '").append(fax).append("', '").append(radio).append("', '").append(celular).append("', ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("'").append(operadoraCelular).append("', '").append(email).append("', '").append(site).append("', '").append(usuario).append("', '").append(limiteCredito).append("')").toString();
         return salvaCli;
     }
 
     public String alteraCliente()
     {
         String editaCli = "UPDATE  cliente SET  ";
-        editaCli = editaCli + "tipoPessoa = '" + tipoPessoa + "', ";
-        editaCli = editaCli + "clienteNomeFantasia =  '" + nomeFantasia + "', ";
-        editaCli = editaCli + "clienteRazaoSocial =  '" + razaoSocial + "', ";
-        editaCli = editaCli + "clienteCnpj =  '" + cnpj + "', ";
-        editaCli = editaCli + "clienteInscEstadual =  '" + inscEstadual + "', ";
-        editaCli = editaCli + "clienteInscMunicipal =  '" + inscMunicipal + "', ";
-        editaCli = editaCli + "clienteEndereco =  '" + endereco.logradouro + "', ";
-        editaCli = editaCli + "clienteNumero =  '" + endereco.numero + "', ";
-        editaCli = editaCli + "clienteBairro =  '" + endereco.bairro + "', ";
-        editaCli = editaCli + "clienteCep =  '" + endereco.cep + "', ";
-        editaCli = editaCli + "clienteCidade =  '" + endereco.cidade + "', ";
-        editaCli = editaCli + "clienteUf =  '" + endereco.uf + "', ";
-        editaCli = editaCli + "clienteComplemento =  '" + endereco.complemento + "', ";
-        editaCli = editaCli + "clienteContato =  '" + contato + "', ";
-        editaCli = editaCli + "clienteTelefone =  '" + telefone + "', ";
-        editaCli = editaCli + "clienteFax =  '" + fax + "', ";
-        editaCli = editaCli + "clienteRadio =  '" + radio + "', ";
-        editaCli = editaCli + "clienteCelular =  '" + celular + "', ";
-        editaCli = editaCli + "operadoraCelular =  '" + operadoraCelular + "', ";
-        editaCli = editaCli + "clienteEmail =  '" + email + "', ";
-        editaCli = editaCli + "clienteSite =  '" + site + "', ";
-        editaCli = editaCli + "clienteUsuario =  '" + usuario.nome + "', ";
-        editaCli = editaCli + "limiteCredito =  '" + limiteCredito + "' ";
-        editaCli = editaCli + "WHERE  clienteID = '" + clienteID + "'";
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("tipoPessoa = '").append(tipoPessoa).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteNomeFantasia =  '").append(nomeFantasia).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteRazaoSocial =  '").append(razaoSocial).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteCnpj =  '").append(cnpj).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteInscEstadual =  '").append(inscEstadual).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteInscMunicipal =  '").append(inscMunicipal).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteEndereco =  '").append(endereco.logradouro).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteNumero =  '").append(endereco.numero).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteBairro =  '").append(endereco.bairro).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteCep =  '").append(endereco.cep).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteCidade =  '").append(endereco.cidade).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteUf =  '").append(endereco.uf).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteComplemento =  '").append(endereco.complemento).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteContato =  '").append(contato).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteTelefone =  '").append(telefone).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteFax =  '").append(fax).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteRadio =  '").append(radio).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteCelular =  '").append(celular).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("operadoraCelular =  '").append(operadoraCelular).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteEmail =  '").append(email).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteSite =  '").append(site).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("clienteUsuario =  '").append(usuario.nome).append("', ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("limiteCredito =  '").append(limiteCredito).append("' ").toString();
+        editaCli = (new StringBuilder(String.valueOf(editaCli))).append("WHERE  clienteID = '").append(clienteID).append("'").toString();
         return editaCli;
     }
 
     public String excluirCliente()
     {
-        return "DELETE FROM cliente WHERE clienteID = '" + clienteID + "'";
+        return (new StringBuilder("DELETE FROM cliente WHERE clienteID = '")).append(clienteID).append("'").toString();
     }
 
     public String statusCliente(int numeroAcao)
     {
         if(numeroAcao == 1)
-            return "UPDATE cliente SET clienteAtivo = 'N' WHERE clienteID = '" + clienteID + "'";
+            return (new StringBuilder("UPDATE cliente SET clienteAtivo = 'N' WHERE clienteID = '")).append(clienteID).append("'").toString();
         if(numeroAcao == 2)
-            return "UPDATE cliente SET clienteAtivo = 'S' WHERE clienteID = '" + clienteID + "'";
+            return (new StringBuilder("UPDATE cliente SET clienteAtivo = 'S' WHERE clienteID = '")).append(clienteID).append("'").toString();
         else
             return null;
     }

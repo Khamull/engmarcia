@@ -24,137 +24,137 @@ public class Pagar
     public String cadastraPagar()
     {
         String inserePagar = "INSERT INTO pagar ";
-        inserePagar = inserePagar + "(contapagarID, formID, valor, vencimento, parcela, de, status, empresaID) ";
-        inserePagar = inserePagar + "VALUES ('" + conta.contaID + "', '" + forma.formPagID + "', '" + valor + "', '" + vencimento + "', '" + parcela + "', '" + de + "', '" + status + "', '" + empresa.empresaID + "')";
+        inserePagar = (new StringBuilder(String.valueOf(inserePagar))).append("(contapagarID, formID, valor, vencimento, parcela, de, status, empresaID) ").toString();
+        inserePagar = (new StringBuilder(String.valueOf(inserePagar))).append("VALUES ('").append(conta.contaID).append("', '").append(forma.formPagID).append("', '").append(valor).append("', '").append(vencimento).append("', '").append(parcela).append("', '").append(de).append("', '").append(status).append("', '").append(empresa.empresaID).append("')").toString();
         return inserePagar;
     }
 
     public String pesquisaConta(String dataInicio, String dataFim)
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = pesquisa + "contapagar.contapagarID, contapagar.favorecido, ";
-        pesquisa = pesquisa + "pagar.*";
-        pesquisa = pesquisa + "FROM pagar ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ";
-        pesquisa = pesquisa + "INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ";
-        pesquisa = pesquisa + "WHERE status = 'D' ";
-        pesquisa = pesquisa + "AND pagar.vencimento BETWEEN '" + dataInicio + "' AND '" + dataFim + "' ";
-        pesquisa = pesquisa + "ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE status = 'D' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND pagar.vencimento BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC").toString();
         return pesquisa;
     }
 
     public String pesquisaContaPorForma(String dataInicio, String dataFim)
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = pesquisa + "contapagar.contapagarID, contapagar.favorecido, ";
-        pesquisa = pesquisa + "pagar.*";
-        pesquisa = pesquisa + "FROM pagar ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ";
-        pesquisa = pesquisa + "INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ";
-        pesquisa = pesquisa + "WHERE status = 'D' ";
-        pesquisa = pesquisa + "AND pagar.formID = '" + forma.formPagID + "' ";
-        pesquisa = pesquisa + "AND pagar.vencimento BETWEEN '" + dataInicio + "' AND '" + dataFim + "' ";
-        pesquisa = pesquisa + "ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE status = 'D' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND pagar.formID = '").append(forma.formPagID).append("' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND pagar.vencimento BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC").toString();
         return pesquisa;
     }
 
     public String contaPaga(String dataInicio, String dataFim)
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = pesquisa + "contapagar.contapagarID, contapagar.favorecido, ";
-        pesquisa = pesquisa + "pagar.*";
-        pesquisa = pesquisa + "FROM pagar ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ";
-        pesquisa = pesquisa + "INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ";
-        pesquisa = pesquisa + "WHERE status = 'P' ";
-        pesquisa = pesquisa + "AND pagar.vencimento BETWEEN '" + dataInicio + "' AND '" + dataFim + "' ";
-        pesquisa = pesquisa + "ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE status = 'P' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND pagar.vencimento BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC").toString();
         return pesquisa;
     }
 
     public String contaPagasPorForma(String dataInicio, String dataFim)
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = pesquisa + "contapagar.contapagarID, contapagar.favorecido, ";
-        pesquisa = pesquisa + "pagar.*";
-        pesquisa = pesquisa + "FROM pagar ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ";
-        pesquisa = pesquisa + "INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ";
-        pesquisa = pesquisa + "WHERE status = 'P' ";
-        pesquisa = pesquisa + "AND pagar.formID = '" + forma.formPagID + "' ";
-        pesquisa = pesquisa + "AND pagar.vencimento BETWEEN '" + dataInicio + "' AND '" + dataFim + "' ";
-        pesquisa = pesquisa + "ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE status = 'P' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND pagar.formID = '").append(forma.formPagID).append("' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND pagar.vencimento BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC").toString();
         return pesquisa;
     }
 
     public String pagarPorID()
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = pesquisa + "contapagar.contapagarID, contapagar.favorecido, ";
-        pesquisa = pesquisa + "pagar.*";
-        pesquisa = pesquisa + "FROM pagar ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ";
-        pesquisa = pesquisa + "INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ";
-        pesquisa = pesquisa + "WHERE pagarID = '" + pagarID + "'";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE pagarID = '").append(pagarID).append("'").toString();
         return pesquisa;
     }
 
     public String detalhePagamento()
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = pesquisa + "contapagar.contapagarID, contapagar.favorecido, contapagar.valor as total, ";
-        pesquisa = pesquisa + "lancamentos.valor as pago, lancamentos.desconto, lancamentos.acrescimo, lancamentos.observacao, lancamentos.data, ";
-        pesquisa = pesquisa + "pagar.*";
-        pesquisa = pesquisa + "FROM pagar ";
-        pesquisa = pesquisa + "INNER JOIN lancamentos ON lancamentos.pagarID = pagar.pagarID ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ";
-        pesquisa = pesquisa + "INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ";
-        pesquisa = pesquisa + "WHERE pagar.pagarID = '" + pagarID + "' ";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, contapagar.valor as total, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("lancamentos.valor as pago, lancamentos.desconto, lancamentos.acrescimo, lancamentos.observacao, lancamentos.data, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN lancamentos ON lancamentos.pagarID = pagar.pagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE pagar.pagarID = '").append(pagarID).append("' ").toString();
         return pesquisa;
     }
 
     public String totalPagar(String dataInicio, String dataFim)
     {
         String total = "SELECT SUM(valor) as faltaPagar FROM pagar ";
-        total = total + "WHERE status = 'D' AND vencimento BETWEEN '" + dataInicio + "' AND '" + dataFim + "'";
+        total = (new StringBuilder(String.valueOf(total))).append("WHERE status = 'D' AND vencimento BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("'").toString();
         return total;
     }
 
     public String pesquisaContaPorEmpresa(String dataInicio, String dataFim)
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = pesquisa + "contapagar.contapagarID, contapagar.favorecido, ";
-        pesquisa = pesquisa + "pagar.*";
-        pesquisa = pesquisa + "FROM pagar ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ";
-        pesquisa = pesquisa + "INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ";
-        pesquisa = pesquisa + "WHERE status = 'D' ";
-        pesquisa = pesquisa + "AND pagar.vencimento BETWEEN '" + dataInicio + "' AND '" + dataFim + "' ";
-        pesquisa = pesquisa + "AND pagar.empresaID = '" + empresa.empresaID + "'";
-        pesquisa = pesquisa + "ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE status = 'D' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND pagar.vencimento BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND pagar.empresaID = '").append(empresa.empresaID).append("'").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("ORDER BY pagar.vencimento ASC, pagar.pagarID  ASC").toString();
         return pesquisa;
     }
 
     public String totalPagarPorEmpresa(String dataInicio, String dataFim)
     {
         String total = "SELECT SUM(valor) as faltaPagar FROM pagar ";
-        total = total + "WHERE status = 'D' AND vencimento BETWEEN '" + dataInicio + "' AND '" + dataFim + "' AND empresaID = '" + empresa.empresaID + "'";
+        total = (new StringBuilder(String.valueOf(total))).append("WHERE status = 'D' AND vencimento BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("' AND empresaID = '").append(empresa.empresaID).append("'").toString();
         return total;
     }
 
     public String alteraPagar()
     {
-        return "UPDATE pagar SET valor = '" + valor + "', vencimento = '" + vencimento + "' WHERE pagarID = '" + pagarID + "'";
+        return (new StringBuilder("UPDATE pagar SET valor = '")).append(valor).append("', vencimento = '").append(vencimento).append("' WHERE pagarID = '").append(pagarID).append("'").toString();
     }
 
     public String alteraStatus()
     {
-        return "UPDATE pagar SET status = 'P' WHERE pagarID = '" + pagarID + "'";
+        return (new StringBuilder("UPDATE pagar SET status = 'P' WHERE pagarID = '")).append(pagarID).append("'").toString();
     }
 
     public String excluiPagar()
     {
-        return "DELETE FROM pagar WHERE pagarID = '" + pagarID + "'";
+        return (new StringBuilder("DELETE FROM pagar WHERE pagarID = '")).append(pagarID).append("'").toString();
     }
 
     public String mensagem(int numeroMsg)

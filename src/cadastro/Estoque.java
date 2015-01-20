@@ -21,30 +21,30 @@ public class Estoque
 
     public String pesquisaEstoque()
     {
-        return "SELECT estoque FROM produto WHERE produtoID = '" + produto.produtoID + "'";
+        return (new StringBuilder("SELECT estoque FROM produto WHERE produtoID = '")).append(produto.produtoID).append("'").toString();
     }
 
     public String salvaEstoque()
     {
         String salvarEst = "INSERT INTO estoque ";
-        salvarEst = salvarEst + "(fornecedorID, produtoID, quantidade, precoCusto, preco, lucro, unidade, usuario, empresaID) ";
-        salvarEst = salvarEst + "VALUES ";
-        salvarEst = salvarEst + "('" + fornecedor.fornecedorID + "', '" + produto.produtoID + "', '" + quantidade + "', '" + produto.precoCusto + "', ";
-        salvarEst = salvarEst + "'" + produto.preco + "', '" + produto.lucro + "', '" + produto.unidade + "', '" + usuario + "', '" + empresa.empresaID + "')";
+        salvarEst = (new StringBuilder(String.valueOf(salvarEst))).append("(fornecedorID, produtoID, quantidade, precoCusto, preco, lucro, unidade, usuario, empresaID) ").toString();
+        salvarEst = (new StringBuilder(String.valueOf(salvarEst))).append("VALUES ").toString();
+        salvarEst = (new StringBuilder(String.valueOf(salvarEst))).append("('").append(fornecedor.fornecedorID).append("', '").append(produto.produtoID).append("', '").append(quantidade).append("', '").append(produto.precoCusto).append("', ").toString();
+        salvarEst = (new StringBuilder(String.valueOf(salvarEst))).append("'").append(produto.preco).append("', '").append(produto.lucro).append("', '").append(produto.unidade).append("', '").append(usuario).append("', '").append(empresa.empresaID).append("')").toString();
         return salvarEst;
     }
 
     public String alteraEstoqueProduto()
     {
-        String alteraEst = "UPDATE produto SET precoCusto = '" + produto.precoCusto + "', preco = '" + produto.preco + "', estoque = '" + quantidade + "', ";
-        alteraEst = alteraEst + "lucro = '" + produto.lucro + "', unidade = '" + produto.unidade + "' ";
-        alteraEst = alteraEst + "WHERE produtoID = '" + produto.produtoID + "'";
+        String alteraEst = (new StringBuilder("UPDATE produto SET precoCusto = '")).append(produto.precoCusto).append("', preco = '").append(produto.preco).append("', estoque = '").append(quantidade).append("', ").toString();
+        alteraEst = (new StringBuilder(String.valueOf(alteraEst))).append("lucro = '").append(produto.lucro).append("', unidade = '").append(produto.unidade).append("' ").toString();
+        alteraEst = (new StringBuilder(String.valueOf(alteraEst))).append("WHERE produtoID = '").append(produto.produtoID).append("'").toString();
         return alteraEst;
     }
 
     public String alteraEstoque()
     {
-        return "UPDATE produto SET estoque = '" + produto.estoque + "' WHERE produtoID = '" + produto.produtoID + "'";
+        return (new StringBuilder("UPDATE produto SET estoque = '")).append(produto.estoque).append("' WHERE produtoID = '").append(produto.produtoID).append("'").toString();
     }
 
     public String qtdTotalEstoque()

@@ -18,32 +18,32 @@ public class Download
     public String pesquisaDownload()
     {
         String busca = "SELECT cliente.clienteID, cliente.clienteNomeFantasia, download.* ";
-        busca = busca + "FROM download INNER JOIN cliente ON cliente.clienteID = download.clienteID ";
-        busca = busca + "ORDER BY download.downloadID DESC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM download INNER JOIN cliente ON cliente.clienteID = download.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY download.downloadID DESC").toString();
         return busca;
     }
 
     public String downloadPorCliente()
     {
         String busca = "SELECT cliente.clienteID, cliente.clienteNomeFantasia, download.* ";
-        busca = busca + "FROM download INNER JOIN cliente ON cliente.clienteID = download.clienteID ";
-        busca = busca + "WHERE cliente.clienteID = '" + cliente.clienteID + "' ";
-        busca = busca + "ORDER BY download.downloadID DESC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM download INNER JOIN cliente ON cliente.clienteID = download.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE cliente.clienteID = '").append(cliente.clienteID).append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY download.downloadID DESC").toString();
         return busca;
     }
 
     public String pesquisaPorCliente(String keyword)
     {
         String busca = "SELECT cliente.clienteID, cliente.clienteNomeFantasia, download.* ";
-        busca = busca + "FROM download INNER JOIN cliente ON cliente.clienteID = download.clienteID ";
-        busca = busca + "WHERE cliente.clienteNomeFantasia LIKE '%" + keyword + "%' ";
-        busca = busca + "ORDER BY download.downloadID DESC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM download INNER JOIN cliente ON cliente.clienteID = download.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE cliente.clienteNomeFantasia LIKE '%").append(keyword).append("%' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY download.downloadID DESC").toString();
         return busca;
     }
 
     public String insereDownload()
     {
-        return "INSERT INTO download (clienteID, arquivo, titulo, contrato) VALUES ('" + cliente.clienteID + "', '" + arquivo + "', '" + titulo + "', '" + contrato + "')";
+        return (new StringBuilder("INSERT INTO download (clienteID, arquivo, titulo, contrato) VALUES ('")).append(cliente.clienteID).append("', '").append(arquivo).append("', '").append(titulo).append("', '").append(contrato).append("')").toString();
     }
 
     public int downloadID;

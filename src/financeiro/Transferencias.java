@@ -23,24 +23,24 @@ public class Transferencias
     public String transferenciaPorID()
     {
         String pesquisaTransf = "SELECT empresa.empresaID, empresa.unidade, transferencias.* ";
-        pesquisaTransf = pesquisaTransf + "FROM transferencias INNER JOIN empresa ON empresa.empresaID = transferencias.empresaID ";
-        pesquisaTransf = pesquisaTransf + "WHERE transferencias.transferenciaID = '" + transferenciaID + "'";
+        pesquisaTransf = (new StringBuilder(String.valueOf(pesquisaTransf))).append("FROM transferencias INNER JOIN empresa ON empresa.empresaID = transferencias.empresaID ").toString();
+        pesquisaTransf = (new StringBuilder(String.valueOf(pesquisaTransf))).append("WHERE transferencias.transferenciaID = '").append(transferenciaID).append("'").toString();
         return pesquisaTransf;
     }
 
     public String cadastraTransferencia()
     {
         String cadastro = "INSERT INTO transferencias ";
-        cadastro = cadastro + "(bancoDe, bancoPara, valor, observacoes, empresaID) ";
-        cadastro = cadastro + "VALUES ('" + bancoDe + "', '" + bancoPara + "', '" + valor + "', '" + observacoes + "', '" + empresa.empresaID + "')";
+        cadastro = (new StringBuilder(String.valueOf(cadastro))).append("(bancoDe, bancoPara, valor, observacoes, empresaID) ").toString();
+        cadastro = (new StringBuilder(String.valueOf(cadastro))).append("VALUES ('").append(bancoDe).append("', '").append(bancoPara).append("', '").append(valor).append("', '").append(observacoes).append("', '").append(empresa.empresaID).append("')").toString();
         return cadastro;
     }
 
     public String listaTranferenciasPorData(String dataInicio, String dataFim)
     {
         String busca = "SELECT * FROM transferencias ";
-        busca = busca + "WHERE data BETWEEN '" + dataInicio + "' AND '" + dataFim + " 23:59:59" + "'";
-        busca = busca + "ORDER BY data ASC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE data BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append(" 23:59:59").append("'").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY data ASC").toString();
         return busca;
     }
 

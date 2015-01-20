@@ -29,20 +29,20 @@ public class Retiradas
 
     public String somaRetiradas()
     {
-        return "SELECT SUM(valor) as totalRetiradas FROM retiradas WHERE caixaID = '" + caixa.caixaID + "'";
+        return (new StringBuilder("SELECT SUM(valor) as totalRetiradas FROM retiradas WHERE caixaID = '")).append(caixa.caixaID).append("'").toString();
     }
 
     public String buscaRetiradas()
     {
-        return "SELECT * FROM retiradas WHERE caixaID = '" + caixa.caixaID + "'";
+        return (new StringBuilder("SELECT * FROM retiradas WHERE caixaID = '")).append(caixa.caixaID).append("'").toString();
     }
 
     public String retirar()
     {
         String cadastra = "INSERT INTO retiradas ";
-        cadastra = cadastra + "(caixaID, valor, usuario, responsavel, observacao, empresaID) ";
-        cadastra = cadastra + "VALUES ";
-        cadastra = cadastra + "('" + caixa.caixaID + "', '" + valor + "', '" + usuario.login + "', '" + responsavel.login + "', '" + observacao + "', '" + empresa.empresaID + "')";
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("(caixaID, valor, usuario, responsavel, observacao, empresaID) ").toString();
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("VALUES ").toString();
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("('").append(caixa.caixaID).append("', '").append(valor).append("', '").append(usuario.login).append("', '").append(responsavel.login).append("', '").append(observacao).append("', '").append(empresa.empresaID).append("')").toString();
         return cadastra;
     }
 

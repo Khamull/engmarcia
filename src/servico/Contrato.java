@@ -15,12 +15,12 @@ public class Contrato
 
     public String textoContrato()
     {
-        return "SELECT * FROM contratopadrao WHERE contratoID = '" + contratoID + "'";
+        return (new StringBuilder("SELECT * FROM contratopadrao WHERE contratoID = '")).append(contratoID).append("'").toString();
     }
 
     public String alteraContrato()
     {
-        return "UPDATE contratopadrao SET contratoTexto = '" + contratoTexto + "' WHERE contratoID = '" + contratoID + "'";
+        return (new StringBuilder("UPDATE contratopadrao SET contratoTexto = '")).append(contratoTexto).append("' WHERE contratoID = '").append(contratoID).append("'").toString();
     }
 
     public String mensagem(int numeroMsg)

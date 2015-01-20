@@ -20,9 +20,10 @@ public class ServicoMetroQuadrado
 
     public String listaItens()
     {
-        String listServ = "SELECT servicos.servicoID, servicos.tipo, servicometroquadrado.* ";
+        String listServ = "SELECT servicos.servicoID, servicos.tipo, servicometroquadrado.*, servico.servicoID as servicoIDEnviar ";
         listServ = listServ + "FROM servicometroquadrado ";
         listServ = listServ + "INNER JOIN servicos ON servicos.servicoID = servicometroquadrado.servicosID ";
+        listServ = listServ + "INNER JOIN servico ON servico.servicoID = servicometroquadrado.servicoID ";
         listServ = listServ + "WHERE servicometroquadrado.servicoID = '" + servico.servicoID + "'";
         return listServ;
     }

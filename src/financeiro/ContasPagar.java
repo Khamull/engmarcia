@@ -20,8 +20,8 @@ public class ContasPagar
     public String cadastraConta()
     {
         String cadastrar = "INSERT INTO contapagar ";
-        cadastrar = cadastrar + "(formPagID, favorecido, valor, vezes, intervalo, data, usuario, empresaID) ";
-        cadastrar = cadastrar + "VALUES ('" + formPag.formPagID + "', '" + favorecido + "', '" + valor + "', '" + vezes + "', '" + intervalo + "', '" + data + "', '" + usuario + "', '" + empresa.empresaID + "')";
+        cadastrar = (new StringBuilder(String.valueOf(cadastrar))).append("(formPagID, favorecido, valor, vezes, intervalo, data, usuario, empresaID) ").toString();
+        cadastrar = (new StringBuilder(String.valueOf(cadastrar))).append("VALUES ('").append(formPag.formPagID).append("', '").append(favorecido).append("', '").append(valor).append("', '").append(vezes).append("', '").append(intervalo).append("', '").append(data).append("', '").append(usuario).append("', '").append(empresa.empresaID).append("')").toString();
         return cadastrar;
     }
 
@@ -32,20 +32,20 @@ public class ContasPagar
 
     public String contaPorId()
     {
-        return "SELECT * FROM contapagar WHERE contapagarID = '" + contaID + "'";
+        return (new StringBuilder("SELECT * FROM contapagar WHERE contapagarID = '")).append(contaID).append("'").toString();
     }
 
     public String detalhePagamento()
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        pesquisa = pesquisa + "contapagar.contapagarID, contapagar.favorecido, contapagar.valor as total, ";
-        pesquisa = pesquisa + "lancamentos.valor as pago, lancamentos.desconto, lancamentos.acrescimo, lancamentos.observacao, ";
-        pesquisa = pesquisa + "pagar.*";
-        pesquisa = pesquisa + "FROM pagar ";
-        pesquisa = pesquisa + "INNER JOIN lancamentos ON lancamentos.pagarID = pagar.pagarID ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ";
-        pesquisa = pesquisa + "INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ";
-        pesquisa = pesquisa + "WHERE contapagar.contapagarID = '" + contaID + "' ";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("contapagar.contapagarID, contapagar.favorecido, contapagar.valor as total, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("lancamentos.valor as pago, lancamentos.desconto, lancamentos.acrescimo, lancamentos.observacao, ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("pagar.*").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM pagar ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN lancamentos ON lancamentos.pagarID = pagar.pagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = pagar.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN contapagar ON contapagar.contapagarID = pagar.contapagarID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE contapagar.contapagarID = '").append(contaID).append("' ").toString();
         return pesquisa;
     }
 

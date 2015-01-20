@@ -1,4 +1,4 @@
-<%@ page errorPage="index.jsp?erro=3" %>
+<!-- %@ page errorPage="index.jsp?erro=3" %-->
 <%@ page import="java.sql.*" %>
 <%@ include file="inc/seguranca.jsp" %>
 <%@ include file="inc/conexao.jsp" %>
@@ -268,7 +268,7 @@ function excluirProd(servicoprodutoID, servicoID){
           <td width="376" align="left"><%=rs03.getString("descricao") %></td>
           <td width="150" align="left"><%=rs03.getString("quantidade").replace(".00", "").replace(".",",") %> <%=uniMed%></td>
           <td width="105" align="center"><%=formato.format(rs03.getDouble("valor")) %></td>
-          <td width="39" align="center"><a href="javascript: excluirM(<%=rs03.getString("servicometroquadradoID")%>, <%=rs03.getString("servicoID")%>)"><img src="ico/ico_cancelar.png" width="18" height="18" border="0" title="Excluir Serviço" /></a></td>
+          <td width="39" align="center"><a href="javascript: excluirM(<%=rs03.getString("servicometroquadradoID")%>, <%=rs03.getString("servicoIDEnviar")%>)"><img src="ico/ico_cancelar.png" width="18" height="18" border="0" title="Excluir Serviço" /></a></td>
          </tr>
          <tr>
           <td align="center" colspan="4"><hr style="border:1px solid #CCCCCC" /></td>

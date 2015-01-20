@@ -97,18 +97,18 @@ public class Moeda
                     if(n % 100 <= 19)
                     {
                         if(saux.length() != 0)
-                            saux = saux + " e " + unidade[n % 100];
+                            saux = (new StringBuilder(String.valueOf(saux))).append(" e ").append(unidade[n % 100]).toString();
                         else
                             saux = unidade[n % 100];
                     } else
                     {
                         if(saux.length() != 0)
-                            saux = saux + " e " + dezena[dez];
+                            saux = (new StringBuilder(String.valueOf(saux))).append(" e ").append(dezena[dez]).toString();
                         else
                             saux = dezena[dez];
                         if(unid != 0)
                             if(saux.length() != 0)
-                                saux = saux + " e " + unidade[unid];
+                                saux = (new StringBuilder(String.valueOf(saux))).append(" e ").append(unidade[unid]).toString();
                             else
                                 saux = unidade[unid];
                     }
@@ -118,12 +118,12 @@ public class Moeda
                     if(i == 0)
                         umReal = true;
                     else
-                        saux = saux + " " + qualificaS[i];
+                        saux = (new StringBuilder(String.valueOf(saux))).append(" ").append(qualificaS[i]).toString();
                 } else
                 if(i != 0)
-                    saux = saux + " " + qualificaP[i];
+                    saux = (new StringBuilder(String.valueOf(saux))).append(" ").append(qualificaP[i]).toString();
                 if(s.length() != 0)
-                    s = saux + ", " + s;
+                    s = (new StringBuilder(String.valueOf(saux))).append(", ").append(s).toString();
                 else
                     s = saux;
             }
@@ -133,34 +133,34 @@ public class Moeda
         }
         if(s.length() != 0)
             if(umReal)
-                s = s + " real";
+                s = (new StringBuilder(String.valueOf(s))).append(" real").toString();
             else
             if(tem)
-                s = s + " reais";
+                s = (new StringBuilder(String.valueOf(s))).append(" reais").toString();
             else
-                s = s + " de reais";
+                s = (new StringBuilder(String.valueOf(s))).append(" de reais").toString();
         if(!centavos.equals("0"))
         {
             if(s.length() != 0)
-                s = s + " e ";
+                s = (new StringBuilder(String.valueOf(s))).append(" e ").toString();
             if(centavos.equals("1"))
             {
-                s = s + "um centavo";
+                s = (new StringBuilder(String.valueOf(s))).append("um centavo").toString();
             } else
             {
                 int n = Integer.parseInt(centavos, 10);
                 if(n <= 19)
                 {
-                    s = s + unidade[n];
+                    s = (new StringBuilder(String.valueOf(s))).append(unidade[n]).toString();
                 } else
                 {
                     int unid = n % 10;
                     int dez = n / 10;
-                    s = s + dezena[dez];
+                    s = (new StringBuilder(String.valueOf(s))).append(dezena[dez]).toString();
                     if(unid != 0)
-                        s = s + " e " + unidade[unid];
+                        s = (new StringBuilder(String.valueOf(s))).append(" e ").append(unidade[unid]).toString();
                 }
-                s = s + " centavos";
+                s = (new StringBuilder(String.valueOf(s))).append(" centavos").toString();
             }
         }
         return s;

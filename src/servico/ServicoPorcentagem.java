@@ -20,24 +20,24 @@ public class ServicoPorcentagem
 
     public String listaItens()
     {
-        return "SELECT * FROM servicoporcentagem WHERE servicoID = '" + servico.servicoID + "'";
+        return (new StringBuilder("SELECT * FROM servicoporcentagem WHERE servicoID = '")).append(servico.servicoID).append("'").toString();
     }
 
     public String servicoPorID()
     {
-        return "SELECT * FROM servicoporcentagem WHERE servicoporcentagemID = '" + servicoporcentagemID + "'";
+        return (new StringBuilder("SELECT * FROM servicoporcentagem WHERE servicoporcentagemID = '")).append(servicoporcentagemID).append("'").toString();
     }
 
     public String salvaServico()
     {
         String salvaServ = "INSERT INTO servicoporcentagem (servicoID, servicosID, descricao, valor, quantidade) ";
-        salvaServ = salvaServ + "VALUES ('" + servico.servicoID + "', '" + servicos.servicoID + "', '" + descricao + "', '" + valor + "', '" + quantidade + "')";
+        salvaServ = (new StringBuilder(String.valueOf(salvaServ))).append("VALUES ('").append(servico.servicoID).append("', '").append(servicos.servicoID).append("', '").append(descricao).append("', '").append(valor).append("', '").append(quantidade).append("')").toString();
         return salvaServ;
     }
 
     public String excluirServico()
     {
-        return "DELETE FROM servicoporcentagem WHERE servicoporcentagemID = '" + servicoporcentagemID + "'";
+        return (new StringBuilder("DELETE FROM servicoporcentagem WHERE servicoporcentagemID = '")).append(servicoporcentagemID).append("'").toString();
     }
 
     public int servicoporcentagemID;

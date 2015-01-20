@@ -22,43 +22,43 @@ public class Cheques
     public String cadastraCheque()
     {
         String cadastra = "INSERT INTO cheques (receberID, clienteID, valorCheque, numeroCheque, vencimentoCheque, observacoes) ";
-        cadastra = cadastra + "VALUES ('" + receber.receberID + "', '" + cliente.clienteID + "', '" + valor + "', '" + numero + "', '" + vencimento + "', '" + observacoes + "')";
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("VALUES ('").append(receber.receberID).append("', '").append(cliente.clienteID).append("', '").append(valor).append("', '").append(numero).append("', '").append(vencimento).append("', '").append(observacoes).append("')").toString();
         return cadastra;
     }
 
     public String listaCheques()
     {
         String busca = "SELECT cliente.clienteID, cliente.clienteNomeFantasia, cliente.clienteTelefone, ";
-        busca = busca + "cheques.* ";
-        busca = busca + "FROM cheques ";
-        busca = busca + "INNER JOIN cliente ON cliente.clienteID = cheques.clienteID ";
-        busca = busca + "ORDER BY cheques.chequeID DESC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("cheques.* ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM cheques ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN cliente ON cliente.clienteID = cheques.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY cheques.chequeID DESC").toString();
         return busca;
     }
 
     public String buscaCheques(String numeroCheque)
     {
         String busca = "SELECT cliente.clienteID, cliente.clienteNomeFantasia, cliente.clienteTelefone, ";
-        busca = busca + "cheques.* ";
-        busca = busca + "FROM cheques ";
-        busca = busca + "INNER JOIN cliente ON cliente.clienteID = cheques.clienteID ";
-        busca = busca + "WHERE numeroCheque = '" + numeroCheque + "'";
+        busca = (new StringBuilder(String.valueOf(busca))).append("cheques.* ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM cheques ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN cliente ON cliente.clienteID = cheques.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE numeroCheque = '").append(numeroCheque).append("'").toString();
         return busca;
     }
 
     public String chequePorReceberID()
     {
         String busca = "SELECT cliente.clienteID, cliente.clienteNomeFantasia, cliente.clienteTelefone, ";
-        busca = busca + "cheques.* ";
-        busca = busca + "FROM cheques ";
-        busca = busca + "INNER JOIN cliente ON cliente.clienteID = cheques.clienteID ";
-        busca = busca + "WHERE cheques.receberID = '" + receber.receberID + "'";
+        busca = (new StringBuilder(String.valueOf(busca))).append("cheques.* ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM cheques ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN cliente ON cliente.clienteID = cheques.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE cheques.receberID = '").append(receber.receberID).append("'").toString();
         return busca;
     }
 
     public String excluiCheque()
     {
-        return "DELETE FROM cheques WHERE chequeID = '" + chequeID + "'";
+        return (new StringBuilder("DELETE FROM cheques WHERE chequeID = '")).append(chequeID).append("'").toString();
     }
 
     public String mensagem(int numeroMsg)

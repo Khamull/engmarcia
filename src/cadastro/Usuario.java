@@ -21,34 +21,34 @@ public class Usuario
 
     public String logar()
     {
-        return "SELECT * FROM usuario WHERE usuarioLogin = '" + login + "' AND usuarioSenha = '" + senha + "' AND usuarioAtivo = 'S'";
+        return (new StringBuilder("SELECT * FROM usuario WHERE usuarioLogin = '")).append(login).append("' AND usuarioSenha = '").append(senha).append("' AND usuarioAtivo = 'S'").toString();
     }
 
     public String logarUnidade()
     {
-        String logaSis = "SELECT * FROM usuario WHERE usuarioLogin = '" + login + "' AND ";
-        logaSis = logaSis + "usuarioSenha = '" + senha + "' AND empresaID = '" + empresa.empresaID + "' AND usuarioAtivo = 'S'";
+        String logaSis = (new StringBuilder("SELECT * FROM usuario WHERE usuarioLogin = '")).append(login).append("' AND ").toString();
+        logaSis = (new StringBuilder(String.valueOf(logaSis))).append("usuarioSenha = '").append(senha).append("' AND empresaID = '").append(empresa.empresaID).append("' AND usuarioAtivo = 'S'").toString();
         return logaSis;
     }
 
     public String logarAdm()
     {
-        return "SELECT * FROM usuario WHERE usuarioLogin = '" + login + "' AND usuarioSenha = '" + senha + "' AND usuarioAtivo = 'S' AND usuarioNivel = '1'";
+        return (new StringBuilder("SELECT * FROM usuario WHERE usuarioLogin = '")).append(login).append("' AND usuarioSenha = '").append(senha).append("' AND usuarioAtivo = 'S' AND usuarioNivel = '1'").toString();
     }
 
     public String verificaNome()
     {
-        return "SELECT usuarioLogin FROM usuario WHERE usuarioLogin = '" + login + "'";
+        return (new StringBuilder("SELECT usuarioLogin FROM usuario WHERE usuarioLogin = '")).append(login).append("'").toString();
     }
 
     public String verificaNomeAlterar()
     {
-        return "SELECT usuarioLogin FROM usuario WHERE usuarioLogin = '" + login + "' AND usuarioID <> '" + usuarioID + "'";
+        return (new StringBuilder("SELECT usuarioLogin FROM usuario WHERE usuarioLogin = '")).append(login).append("' AND usuarioID <> '").append(usuarioID).append("'").toString();
     }
 
     public String pesquisaUsuario(String keyWord)
     {
-        return "SELECT * FROM usuario WHERE usuarionome LIKE '%" + keyWord + "%' ORDER BY usuarioID DESC";
+        return (new StringBuilder("SELECT * FROM usuario WHERE usuarionome LIKE '%")).append(keyWord).append("%' ORDER BY usuarioID DESC").toString();
     }
 
     public String listaUsuarios()
@@ -64,14 +64,14 @@ public class Usuario
     public String usuarioPorID()
     {
         String busca = "SELECT empresa.empresaID, empresa.unidade, usuario.* ";
-        busca = busca + "FROM usuario INNER JOIN empresa ON empresa.empresaID = usuario.empresaID ";
-        busca = busca + "WHERE usuario.usuarioID = '" + usuarioID + "'";
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM usuario INNER JOIN empresa ON empresa.empresaID = usuario.empresaID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE usuario.usuarioID = '").append(usuarioID).append("'").toString();
         return busca;
     }
 
     public String usuarioPorLogin()
     {
-        return "SELECT * FROM usuario WHERE usuarioLogin = '" + login + "'";
+        return (new StringBuilder("SELECT * FROM usuario WHERE usuarioLogin = '")).append(login).append("'").toString();
     }
 
     public String listaUsuariosOrdenados()
@@ -82,31 +82,31 @@ public class Usuario
     public String salvaUsuario()
     {
         String inserirNaBase = "INSERT INTO usuario ";
-        inserirNaBase = inserirNaBase + "(funcionarioID, usuarioNome, usuarioTelefone, usuarioEmail, usuarioLogin, usuarioSenha, usuarioNivel, empresaID) ";
-        inserirNaBase = inserirNaBase + "VALUES ('" + funcionario.funcionarioID + "', '" + nome + "', '', '', '" + login + "', '" + senha + "', '" + nivel + "', '" + empresa.empresaID + "')";
+        inserirNaBase = (new StringBuilder(String.valueOf(inserirNaBase))).append("(funcionarioID, usuarioNome, usuarioTelefone, usuarioEmail, usuarioLogin, usuarioSenha, usuarioNivel, empresaID) ").toString();
+        inserirNaBase = (new StringBuilder(String.valueOf(inserirNaBase))).append("VALUES ('").append(funcionario.funcionarioID).append("', '").append(nome).append("', '', '', '").append(login).append("', '").append(senha).append("', '").append(nivel).append("', '").append(empresa.empresaID).append("')").toString();
         return inserirNaBase;
     }
 
     public String editarUsuario()
     {
         String atualizaUsuario = "UPDATE usuario ";
-        atualizaUsuario = atualizaUsuario + "SET funcionarioID = '" + funcionario.funcionarioID + "', usuarioNome = '" + nome + "', usuarioLogin = '" + login + "', ";
-        atualizaUsuario = atualizaUsuario + "usuarioSenha = '" + senha + "', usuarioNivel = '" + nivel + "', empresaID = '" + empresa.empresaID + "' ";
-        atualizaUsuario = atualizaUsuario + "WHERE usuarioID = '" + usuarioID + "'";
+        atualizaUsuario = (new StringBuilder(String.valueOf(atualizaUsuario))).append("SET funcionarioID = '").append(funcionario.funcionarioID).append("', usuarioNome = '").append(nome).append("', usuarioLogin = '").append(login).append("', ").toString();
+        atualizaUsuario = (new StringBuilder(String.valueOf(atualizaUsuario))).append("usuarioSenha = '").append(senha).append("', usuarioNivel = '").append(nivel).append("', empresaID = '").append(empresa.empresaID).append("' ").toString();
+        atualizaUsuario = (new StringBuilder(String.valueOf(atualizaUsuario))).append("WHERE usuarioID = '").append(usuarioID).append("'").toString();
         return atualizaUsuario;
     }
 
     public String excluiUsuario()
     {
-        return "DELETE FROM usuario WHERE usuarioID = '" + usuarioID + "'";
+        return (new StringBuilder("DELETE FROM usuario WHERE usuarioID = '")).append(usuarioID).append("'").toString();
     }
 
     public String statusUsuario(int numeroAcao)
     {
         if(numeroAcao == 1)
-            return "UPDATE usuario SET usuarioAtivo = 'N' WHERE usuarioID = '" + usuarioID + "'";
+            return (new StringBuilder("UPDATE usuario SET usuarioAtivo = 'N' WHERE usuarioID = '")).append(usuarioID).append("'").toString();
         if(numeroAcao == 2)
-            return "UPDATE usuario SET usuarioAtivo = 'S' WHERE usuarioID = '" + usuarioID + "'";
+            return (new StringBuilder("UPDATE usuario SET usuarioAtivo = 'S' WHERE usuarioID = '")).append(usuarioID).append("'").toString();
         else
             return null;
     }

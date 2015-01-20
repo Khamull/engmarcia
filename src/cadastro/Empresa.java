@@ -20,7 +20,7 @@ public class Empresa
 
     public String dadosGerais()
     {
-        return "SELECT * FROM empresa WHERE empresaID = '" + empresaID + "'";
+        return (new StringBuilder("SELECT * FROM empresa WHERE empresaID = '")).append(empresaID).append("'").toString();
     }
 
     public String listaEmpresas()
@@ -40,33 +40,33 @@ public class Empresa
 
     public String alterarEmpresa()
     {
-        String altEmpresa = "UPDATE empresa SET unidade = '" + unidade + "', nomeFantasia = '" + nomeFantasia + "', razaoSocial = '" + razaoSocial + "', ramo = '" + ramo + "', ";
-        altEmpresa = altEmpresa + "cnpj = '" + cnpj + "', inscEstadual = '" + inscEstadual + "', inscMunicipal = '" + inscMunicipal + "', cep = '" + cep + "', ";
-        altEmpresa = altEmpresa + "rua = '" + rua + "', numero = '" + numero + "', bairro = '" + bairro + "', cidade = '" + cidade + "', uf = '" + uf + "', ";
-        altEmpresa = altEmpresa + "complemento = '" + complemento + "', responsavel = '" + responsavel + "', telefone = '" + telefone + "', fax = '" + fax + "', ";
-        altEmpresa = altEmpresa + "celular = '" + celular + "', operadora = '" + operadora + "', email = '" + email + "', site = '" + site + "' ";
-        altEmpresa = altEmpresa + "WHERE empresaID = '" + empresaID + "'";
+        String altEmpresa = (new StringBuilder("UPDATE empresa SET unidade = '")).append(unidade).append("', nomeFantasia = '").append(nomeFantasia).append("', razaoSocial = '").append(razaoSocial).append("', ramo = '").append(ramo).append("', ").toString();
+        altEmpresa = (new StringBuilder(String.valueOf(altEmpresa))).append("cnpj = '").append(cnpj).append("', inscEstadual = '").append(inscEstadual).append("', inscMunicipal = '").append(inscMunicipal).append("', cep = '").append(cep).append("', ").toString();
+        altEmpresa = (new StringBuilder(String.valueOf(altEmpresa))).append("rua = '").append(rua).append("', numero = '").append(numero).append("', bairro = '").append(bairro).append("', cidade = '").append(cidade).append("', uf = '").append(uf).append("', ").toString();
+        altEmpresa = (new StringBuilder(String.valueOf(altEmpresa))).append("complemento = '").append(complemento).append("', responsavel = '").append(responsavel).append("', telefone = '").append(telefone).append("', fax = '").append(fax).append("', ").toString();
+        altEmpresa = (new StringBuilder(String.valueOf(altEmpresa))).append("celular = '").append(celular).append("', operadora = '").append(operadora).append("', email = '").append(email).append("', site = '").append(site).append("' ").toString();
+        altEmpresa = (new StringBuilder(String.valueOf(altEmpresa))).append("WHERE empresaID = '").append(empresaID).append("'").toString();
         return altEmpresa;
     }
 
     public String salvaEmpresa()
     {
         String cadastraEmpresa = "INSERT INTO empresa ";
-        cadastraEmpresa = cadastraEmpresa + "(unidade, nomeFantasia, razaoSocial, ramo, cnpj, inscEstadual, inscMunicipal, cep, rua, numero, bairro, cidade, uf, ";
-        cadastraEmpresa = cadastraEmpresa + "complemento, responsavel, telefone, fax, celular, operadora, email, site) ";
-        cadastraEmpresa = cadastraEmpresa + "VALUES ";
-        cadastraEmpresa = cadastraEmpresa + "('" + unidade + "', '" + nomeFantasia + "', '" + razaoSocial + "', '" + ramo + "', '" + cnpj + "', '" + inscEstadual + "', '" + inscMunicipal + "', ";
-        cadastraEmpresa = cadastraEmpresa + "'" + cep + "', '" + rua + "', '" + numero + "', '" + bairro + "', '" + cidade + "', '" + uf + "', '" + complemento + "', ";
-        cadastraEmpresa = cadastraEmpresa + "'" + responsavel + "', '" + telefone + "', '" + fax + "', '" + celular + "', '" + operadora + "', '" + email + "', '" + site + "')";
+        cadastraEmpresa = (new StringBuilder(String.valueOf(cadastraEmpresa))).append("(unidade, nomeFantasia, razaoSocial, ramo, cnpj, inscEstadual, inscMunicipal, cep, rua, numero, bairro, cidade, uf, ").toString();
+        cadastraEmpresa = (new StringBuilder(String.valueOf(cadastraEmpresa))).append("complemento, responsavel, telefone, fax, celular, operadora, email, site) ").toString();
+        cadastraEmpresa = (new StringBuilder(String.valueOf(cadastraEmpresa))).append("VALUES ").toString();
+        cadastraEmpresa = (new StringBuilder(String.valueOf(cadastraEmpresa))).append("('").append(unidade).append("', '").append(nomeFantasia).append("', '").append(razaoSocial).append("', '").append(ramo).append("', '").append(cnpj).append("', '").append(inscEstadual).append("', '").append(inscMunicipal).append("', ").toString();
+        cadastraEmpresa = (new StringBuilder(String.valueOf(cadastraEmpresa))).append("'").append(cep).append("', '").append(rua).append("', '").append(numero).append("', '").append(bairro).append("', '").append(cidade).append("', '").append(uf).append("', '").append(complemento).append("', ").toString();
+        cadastraEmpresa = (new StringBuilder(String.valueOf(cadastraEmpresa))).append("'").append(responsavel).append("', '").append(telefone).append("', '").append(fax).append("', '").append(celular).append("', '").append(operadora).append("', '").append(email).append("', '").append(site).append("')").toString();
         return cadastraEmpresa;
     }
 
     public String statusEmpresa(int numeroAcao)
     {
         if(numeroAcao == 1)
-            return "UPDATE empresa SET empresaAtiva = 'N' WHERE empresaID = '" + empresaID + "'";
+            return (new StringBuilder("UPDATE empresa SET empresaAtiva = 'N' WHERE empresaID = '")).append(empresaID).append("'").toString();
         if(numeroAcao == 2)
-            return "UPDATE empresa SET empresaAtiva = 'S' WHERE empresaID = '" + empresaID + "'";
+            return (new StringBuilder("UPDATE empresa SET empresaAtiva = 'S' WHERE empresaID = '")).append(empresaID).append("'").toString();
         else
             return null;
     }

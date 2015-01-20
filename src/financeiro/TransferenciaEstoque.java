@@ -20,9 +20,9 @@ public class TransferenciaEstoque
     public String salvaTransferencia()
     {
         String salvar = "INSERT INTO transferenciaestoque ";
-        salvar = salvar + "(usuarioID, empresaID, origemID, destinoID, quantidade) ";
-        salvar = salvar + "VALUES ";
-        salvar = salvar + "('" + usuario.usuarioID + "','" + empresa.empresaID + "','" + origemID + "','" + destinoID + "','" + quantidade + "')";
+        salvar = (new StringBuilder(String.valueOf(salvar))).append("(usuarioID, empresaID, origemID, destinoID, quantidade) ").toString();
+        salvar = (new StringBuilder(String.valueOf(salvar))).append("VALUES ").toString();
+        salvar = (new StringBuilder(String.valueOf(salvar))).append("('").append(usuario.usuarioID).append("','").append(empresa.empresaID).append("','").append(origemID).append("','").append(destinoID).append("','").append(quantidade).append("')").toString();
         return salvar;
     }
 

@@ -23,87 +23,87 @@ public class Venda
 
     public String vendaAberta()
     {
-        return "SELECT * FROM venda WHERE status = '1' AND usuario = '" + usuario.login + "'";
+        return (new StringBuilder("SELECT * FROM venda WHERE status = '1' AND usuario = '")).append(usuario.login).append("'").toString();
     }
 
     public String clienteVendaID()
     {
-        return "SELECT cliente.* , venda.* FROM venda LEFT JOIN cliente ON cliente.clienteID = venda.clienteID WHERE venda.vendaID = '" + vendaID + "'";
+        return (new StringBuilder("SELECT cliente.* , venda.* FROM venda LEFT JOIN cliente ON cliente.clienteID = venda.clienteID WHERE venda.vendaID = '")).append(vendaID).append("'").toString();
     }
 
     public String vendasFechadas(String dataInicial, String dataFinal)
     {
         String busca = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        busca = busca + "cliente.clienteID, cliente.clienteNomeFantasia, ";
-        busca = busca + "venda.* FROM venda ";
-        busca = busca + "INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ";
-        busca = busca + "LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ";
-        busca = busca + "WHERE venda.data BETWEEN '" + dataInicial + "' AND '" + dataFinal + " 23:59:59" + "' ";
-        busca = busca + "AND venda.status = '2' AND venda.empresaID = '" + empresa.empresaID + "' ";
-        busca = busca + "ORDER BY data DESC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("cliente.clienteID, cliente.clienteNomeFantasia, ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("venda.* FROM venda ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE venda.data BETWEEN '").append(dataInicial).append("' AND '").append(dataFinal).append(" 23:59:59").append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("AND venda.status = '2' AND venda.empresaID = '").append(empresa.empresaID).append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY data DESC").toString();
         return busca;
     }
 
     public String listaVendasRelatorio(String dataInicial, String dataFinal)
     {
         String busca = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        busca = busca + "cliente.clienteID, cliente.clienteNomeFantasia, ";
-        busca = busca + "venda.* FROM venda ";
-        busca = busca + "INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ";
-        busca = busca + "LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ";
-        busca = busca + "WHERE venda.data BETWEEN '" + dataInicial + "' AND '" + dataFinal + " 23:59:59" + "' ";
-        busca = busca + "AND venda.status = '2' ";
-        busca = busca + "ORDER BY data ASC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("cliente.clienteID, cliente.clienteNomeFantasia, ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("venda.* FROM venda ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE venda.data BETWEEN '").append(dataInicial).append("' AND '").append(dataFinal).append(" 23:59:59").append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("AND venda.status = '2' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY data ASC").toString();
         return busca;
     }
 
     public String listaVendasRelatorioTotal(String dataInicial, String dataFinal)
     {
         String busca = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        busca = busca + "cliente.clienteID, cliente.clienteNomeFantasia, ";
-        busca = busca + "venda.vendaID, venda.formPagID, venda.clienteID, SUM(valor) AS totalVenda FROM venda ";
-        busca = busca + "INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ";
-        busca = busca + "LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ";
-        busca = busca + "WHERE venda.data BETWEEN '" + dataInicial + "' AND '" + dataFinal + " 23:59:59" + "' ";
-        busca = busca + "AND venda.status = '2' ";
-        busca = busca + "ORDER BY data ASC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("cliente.clienteID, cliente.clienteNomeFantasia, ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("venda.vendaID, venda.formPagID, venda.clienteID, SUM(valor) AS totalVenda FROM venda ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE venda.data BETWEEN '").append(dataInicial).append("' AND '").append(dataFinal).append(" 23:59:59").append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("AND venda.status = '2' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY data ASC").toString();
         return busca;
     }
 
     public String listaVendasRelatorioPorFormaPagmento(String dataInicial, String dataFinal)
     {
         String busca = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        busca = busca + "cliente.clienteID, cliente.clienteNomeFantasia, ";
-        busca = busca + "venda.* FROM venda ";
-        busca = busca + "INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ";
-        busca = busca + "LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ";
-        busca = busca + "WHERE venda.data BETWEEN '" + dataInicial + "' AND '" + dataFinal + " 23:59:59" + "' ";
-        busca = busca + "AND venda.status = '2' AND venda.formPagID = '" + formPag.formPagID + "' ";
-        busca = busca + "ORDER BY data ASC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("cliente.clienteID, cliente.clienteNomeFantasia, ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("venda.* FROM venda ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE venda.data BETWEEN '").append(dataInicial).append("' AND '").append(dataFinal).append(" 23:59:59").append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("AND venda.status = '2' AND venda.formPagID = '").append(formPag.formPagID).append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY data ASC").toString();
         return busca;
     }
 
     public String listaVendasRelatorioPorFormaPagmentoTotal(String dataInicial, String dataFinal)
     {
         String busca = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        busca = busca + "cliente.clienteID, cliente.clienteNomeFantasia, ";
-        busca = busca + "venda.vendaID, venda.formPagID, venda.clienteID, SUM(valor) AS totalVenda FROM venda ";
-        busca = busca + "INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ";
-        busca = busca + "LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ";
-        busca = busca + "WHERE venda.data BETWEEN '" + dataInicial + "' AND '" + dataFinal + " 23:59:59" + "' ";
-        busca = busca + "AND venda.status = '2' AND venda.formPagID = '" + formPag.formPagID + "' ";
-        busca = busca + "ORDER BY data ASC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("cliente.clienteID, cliente.clienteNomeFantasia, ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("venda.vendaID, venda.formPagID, venda.clienteID, SUM(valor) AS totalVenda FROM venda ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("LEFT JOIN cliente ON cliente.clienteID = venda.clienteID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE venda.data BETWEEN '").append(dataInicial).append("' AND '").append(dataFinal).append(" 23:59:59").append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("AND venda.status = '2' AND venda.formPagID = '").append(formPag.formPagID).append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY data ASC").toString();
         return busca;
     }
 
     public String dadosVenda()
     {
-        return "SELECT * FROM venda WHERE vendaID = '" + vendaID + "'";
+        return (new StringBuilder("SELECT * FROM venda WHERE vendaID = '")).append(vendaID).append("'").toString();
     }
 
     public String ultimaVendaPorUsuario()
     {
-        return "SELECT * FROM venda WHERE usuario = '" + usuario.login + "' AND status = '2' ORDER BY vendaID DESC LIMIT 1";
+        return (new StringBuilder("SELECT * FROM venda WHERE usuario = '")).append(usuario.login).append("' AND status = '2' ORDER BY vendaID DESC LIMIT 1").toString();
     }
 
     public String ultimaVenda()
@@ -114,57 +114,57 @@ public class Venda
     public String somaVendas(int vendaInicio, int vendaFim)
     {
         String vendas = "SELECT SUM(valor) as totalVendas ";
-        vendas = vendas + "FROM venda ";
-        vendas = vendas + "WHERE vendaID BETWEEN '" + vendaInicio + "' AND '" + vendaFim + "' ";
-        vendas = vendas + "AND usuario = '" + usuario.login + "'";
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("FROM venda ").toString();
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("WHERE vendaID BETWEEN '").append(vendaInicio).append("' AND '").append(vendaFim).append("' ").toString();
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("AND usuario = '").append(usuario.login).append("'").toString();
         return vendas;
     }
 
     public String somaVendasDinheiro(int vendaInicio, int vendaFim)
     {
         String vendas = "SELECT SUM(valor) as totalVendas ";
-        vendas = vendas + "FROM venda ";
-        vendas = vendas + "WHERE vendaID BETWEEN '" + vendaInicio + "' AND '" + vendaFim + "' ";
-        vendas = vendas + "AND usuario = '" + usuario.login + "' AND formPagID = '1'";
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("FROM venda ").toString();
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("WHERE vendaID BETWEEN '").append(vendaInicio).append("' AND '").append(vendaFim).append("' ").toString();
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("AND usuario = '").append(usuario.login).append("' AND formPagID = '1'").toString();
         return vendas;
     }
 
     public String somaVendaFormaPgto(int vendaInicio, int vendaFim)
     {
         String vendas = "SELECT formapagamento.formID, formapagamento.descricao, ";
-        vendas = vendas + "SUM(venda.valor) as totalVendas, venda.formPagID ";
-        vendas = vendas + "FROM venda ";
-        vendas = vendas + "INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ";
-        vendas = vendas + "WHERE venda.vendaID BETWEEN '" + vendaInicio + "' AND '" + vendaFim + "' ";
-        vendas = vendas + "AND venda.usuario = '" + usuario.login + "' ";
-        vendas = vendas + "GROUP BY venda.formPagID";
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("SUM(venda.valor) as totalVendas, venda.formPagID ").toString();
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("FROM venda ").toString();
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("INNER JOIN formapagamento ON formapagamento.formID = venda.formPagID ").toString();
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("WHERE venda.vendaID BETWEEN '").append(vendaInicio).append("' AND '").append(vendaFim).append("' ").toString();
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("AND venda.usuario = '").append(usuario.login).append("' ").toString();
+        vendas = (new StringBuilder(String.valueOf(vendas))).append("GROUP BY venda.formPagID").toString();
         return vendas;
     }
 
     public String cadastraVenda()
     {
         String insere = "INSERT INTO venda (clienteID, formPagID, vezes, valor, entrada, troco, desconto, notaFiscal, usuario, empresaID) ";
-        insere = insere + "VALUES ('0', '0', '0', '0', '0', '0', '0', '0', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        insere = (new StringBuilder(String.valueOf(insere))).append("VALUES ('0', '0', '0', '0', '0', '0', '0', '0', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return insere;
     }
 
     public String completaVenda()
     {
         String completa = "UPDATE venda ";
-        completa = completa + "SET clienteID = '" + cliente.clienteID + "', formPagID = '" + formPag.formPagID + "', vezes = '" + vezes + "', ";
-        completa = completa + "valor = '" + valor + "', entrada = '" + entrada + "', troco = '" + troco + "', desconto = '" + desconto + "', status = '2' ";
-        completa = completa + "WHERE vendaID = '" + vendaID + "'";
+        completa = (new StringBuilder(String.valueOf(completa))).append("SET clienteID = '").append(cliente.clienteID).append("', formPagID = '").append(formPag.formPagID).append("', vezes = '").append(vezes).append("', ").toString();
+        completa = (new StringBuilder(String.valueOf(completa))).append("valor = '").append(valor).append("', entrada = '").append(entrada).append("', troco = '").append(troco).append("', desconto = '").append(desconto).append("', status = '2' ").toString();
+        completa = (new StringBuilder(String.valueOf(completa))).append("WHERE vendaID = '").append(vendaID).append("'").toString();
         return completa;
     }
 
     public String finalizaVenda()
     {
-        return "UPDATE venda SET status = '2' WHERE vendaID = '" + vendaID + "'";
+        return (new StringBuilder("UPDATE venda SET status = '2' WHERE vendaID = '")).append(vendaID).append("'").toString();
     }
 
     public String cancelaVenda()
     {
-        return "DELETE FROM venda WHERE vendaID = '" + vendaID + "'";
+        return (new StringBuilder("DELETE FROM venda WHERE vendaID = '")).append(vendaID).append("'").toString();
     }
 
     public int vendaID;

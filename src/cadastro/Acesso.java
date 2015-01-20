@@ -30,7 +30,7 @@ public class Acesso
 
     public String registraAcesso(String ip)
     {
-        return "INSERT INTO acesso (acessoUsuario, acessoIP) VALUES ('" + usuario + "', '" + ip + "')";
+        return (new StringBuilder("INSERT INTO acesso (acessoUsuario, acessoIP) VALUES ('")).append(usuario).append("', '").append(ip).append("')").toString();
     }
 
     public int acessoID;

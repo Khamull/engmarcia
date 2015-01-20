@@ -33,110 +33,110 @@ public class Lancamentos
     public String insereEntrada()
     {
         String salvaValor = "INSERT INTO lancamentos ";
-        salvaValor = salvaValor + "(receberID, vendaID, livroID, formID, valor, tipo, usuario, empresaID) ";
-        salvaValor = salvaValor + "VALUES ('" + receber.receberID + "', '" + venda.vendaID + "', '1', '1', '" + valor + "', 'R', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("(receberID, vendaID, livroID, formID, valor, tipo, usuario, empresaID) ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("VALUES ('").append(receber.receberID).append("', '").append(venda.vendaID).append("', '1', '1', '").append(valor).append("', 'R', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return salvaValor;
     }
 
     public String insereEntradaServico()
     {
         String salvaValor = "INSERT INTO lancamentos ";
-        salvaValor = salvaValor + "(receberID, vendaID, livroID, formID, valor, tipo, usuario, empresaID) ";
-        salvaValor = salvaValor + "VALUES ('" + receber.receberID + "', '" + venda.vendaID + "', '1', '1', '" + valor + "', 'S', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("(receberID, vendaID, livroID, formID, valor, tipo, usuario, empresaID) ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("VALUES ('").append(receber.receberID).append("', '").append(venda.vendaID).append("', '1', '1', '").append(valor).append("', 'S', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return salvaValor;
     }
 
     public String insereEntradaServicoObs()
     {
         String salvaValor = "INSERT INTO lancamentos ";
-        salvaValor = salvaValor + "(receberID, vendaID, livroID, formID, valor, observacao, tipo, usuario, empresaID) ";
-        salvaValor = salvaValor + "VALUES ('" + receber.receberID + "', '" + venda.vendaID + "', '1', '1', '" + valor + "', '" + observacao + "', 'S', ";
-        salvaValor = salvaValor + "'" + usuario.login + "', '" + empresa.empresaID + "')";
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("(receberID, vendaID, livroID, formID, valor, observacao, tipo, usuario, empresaID) ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("VALUES ('").append(receber.receberID).append("', '").append(venda.vendaID).append("', '1', '1', '").append(valor).append("', '").append(observacao).append("', 'S', ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("'").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return salvaValor;
     }
 
     public String pagaContaReceber()
     {
         String salvaValor = "INSERT INTO lancamentos ";
-        salvaValor = salvaValor + "(receberID, vendaID, livroID, formID, valor, desconto, acrescimo, observacao, tipo, usuario, empresaID) ";
-        salvaValor = salvaValor + "VALUES ('" + receber.receberID + "', '" + venda.vendaID + "', '" + livro.livroID + "', '" + formaPag.formPagID + "', ";
-        salvaValor = salvaValor + "'" + valor + "', '" + desconto + "', '" + acrescimo + "', '" + observacao + "', 'R', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("(receberID, vendaID, livroID, formID, valor, desconto, acrescimo, observacao, tipo, usuario, empresaID) ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("VALUES ('").append(receber.receberID).append("', '").append(venda.vendaID).append("', '").append(livro.livroID).append("', '").append(formaPag.formPagID).append("', ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("'").append(valor).append("', '").append(desconto).append("', '").append(acrescimo).append("', '").append(observacao).append("', 'R', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return salvaValor;
     }
 
     public String pagaContaReceberServico()
     {
         String salvaValor = "INSERT INTO lancamentos ";
-        salvaValor = salvaValor + "(receberID, vendaID, livroID, formID, valor, desconto, acrescimo, observacao, tipo, usuario, empresaID) ";
-        salvaValor = salvaValor + "VALUES ('" + receber.receberID + "', '" + venda.vendaID + "', '" + livro.livroID + "', '" + formaPag.formPagID + "', ";
-        salvaValor = salvaValor + "'" + valor + "', '" + desconto + "', '" + acrescimo + "', '" + observacao + "', 'S', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("(receberID, vendaID, livroID, formID, valor, desconto, acrescimo, observacao, tipo, usuario, empresaID) ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("VALUES ('").append(receber.receberID).append("', '").append(venda.vendaID).append("', '").append(livro.livroID).append("', '").append(formaPag.formPagID).append("', ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("'").append(valor).append("', '").append(desconto).append("', '").append(acrescimo).append("', '").append(observacao).append("', 'S', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return salvaValor;
     }
 
     public String pagaContaPagar()
     {
         String salvaValor = "INSERT INTO lancamentos ";
-        salvaValor = salvaValor + "(pagarID, contaPagarID, livroID, formID, valor, desconto, acrescimo, favorecido, observacao, tipo, usuario, empresaID) ";
-        salvaValor = salvaValor + "VALUES ('" + pagar.pagarID + "', '" + contaPagar.contaID + "', '" + livro.livroID + "', '" + formaPag.formPagID + "', '" + valor + "', ";
-        salvaValor = salvaValor + "'" + desconto + "', '" + acrescimo + "', '" + favorecido + "', '" + observacao + "', 'P', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("(pagarID, contaPagarID, livroID, formID, valor, desconto, acrescimo, favorecido, observacao, tipo, usuario, empresaID) ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("VALUES ('").append(pagar.pagarID).append("', '").append(contaPagar.contaID).append("', '").append(livro.livroID).append("', '").append(formaPag.formPagID).append("', '").append(valor).append("', ").toString();
+        salvaValor = (new StringBuilder(String.valueOf(salvaValor))).append("'").append(desconto).append("', '").append(acrescimo).append("', '").append(favorecido).append("', '").append(observacao).append("', 'P', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return salvaValor;
     }
 
     public String transfere()
     {
         String transf = "INSERT INTO lancamentos (transferenciaID, livroID, valor, formID, tipo, usuario, empresaID) ";
-        transf = transf + "VALUES ('" + transferencia.transferenciaID + "', '" + livro.livroID + "', '" + valor + "', '1', 'T', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        transf = (new StringBuilder(String.valueOf(transf))).append("VALUES ('").append(transferencia.transferenciaID).append("', '").append(livro.livroID).append("', '").append(valor).append("', '1', 'T', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return transf;
     }
 
     public String deposito()
     {
         String transf = "INSERT INTO lancamentos (transferenciaID, livroID, valor, formID, tipo, usuario, empresaID) ";
-        transf = transf + "VALUES ('" + transferencia.transferenciaID + "', '" + livro.livroID + "', '" + valor + "', '1', 'D', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        transf = (new StringBuilder(String.valueOf(transf))).append("VALUES ('").append(transferencia.transferenciaID).append("', '").append(livro.livroID).append("', '").append(valor).append("', '1', 'D', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return transf;
     }
 
     public String chequeVoltou()
     {
         String cheque = "INSERT INTO lancamentos (receberID, vendaID, livroID, formID, valor, observacao, tipo, usuario, empresaID) ";
-        cheque = cheque + "VALUES ('" + receber.receberID + "', '" + venda.vendaID + "', '" + livro.livroID + "', '" + formaPag.formPagID + "', '" + valor + "', ";
-        cheque = cheque + "'" + observacao + "', 'C', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        cheque = (new StringBuilder(String.valueOf(cheque))).append("VALUES ('").append(receber.receberID).append("', '").append(venda.vendaID).append("', '").append(livro.livroID).append("', '").append(formaPag.formPagID).append("', '").append(valor).append("', ").toString();
+        cheque = (new StringBuilder(String.valueOf(cheque))).append("'").append(observacao).append("', 'C', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return cheque;
     }
 
     public String listaRecebimentos(String dataInicio, String dataFim)
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, lancamentos.* FROM lancamentos ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = lancamentos.formID ";
-        pesquisa = pesquisa + "WHERE lancamentos.livroID = '" + livro.livroID + "' ";
-        pesquisa = pesquisa + "AND lancamentos.data BETWEEN '" + dataInicio + "' AND '" + dataFim + " 23:59:59" + "'";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = lancamentos.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE lancamentos.livroID = '").append(livro.livroID).append("' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND lancamentos.data BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append(" 23:59:59").append("'").toString();
         return pesquisa;
     }
 
     public String listaRecebimentosPorEmpresa(String dataInicio, String dataFim)
     {
         String pesquisa = "SELECT formapagamento.formID, formapagamento.descricao, lancamentos.* FROM lancamentos ";
-        pesquisa = pesquisa + "INNER JOIN formapagamento ON formapagamento.formID = lancamentos.formID ";
-        pesquisa = pesquisa + "WHERE lancamentos.livroID = '" + livro.livroID + "' AND lancamentos.empresaID = '" + empresa.empresaID + "' ";
-        pesquisa = pesquisa + "AND lancamentos.data BETWEEN '" + dataInicio + "' AND '" + dataFim + " 23:59:59" + "'";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN formapagamento ON formapagamento.formID = lancamentos.formID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE lancamentos.livroID = '").append(livro.livroID).append("' AND lancamentos.empresaID = '").append(empresa.empresaID).append("' ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("AND lancamentos.data BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append(" 23:59:59").append("'").toString();
         return pesquisa;
     }
 
     public String dividasQuitadasTotal(String dataBusca, String clienteID)
     {
         String pesquisa = "SELECT venda.vendaID, venda.clienteID, cliente.clienteID, cliente.clienteNomeFantasia, lancamentos.vendaID, lancamentos.valor, SUM(lancamentos.valor) as total, lancamentos.formID ";
-        pesquisa = pesquisa + "FROM lancamentos INNER JOIN venda ON venda.vendaID = lancamentos.vendaID ";
-        pesquisa = pesquisa + "INNER JOIN cliente ON cliente.clienteID = venda.clienteID ";
-        pesquisa = pesquisa + "WHERE lancamentos.data LIKE '" + dataBusca + "%' AND formID = '7' AND venda.clienteID = '" + clienteID + "'";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM lancamentos INNER JOIN venda ON venda.vendaID = lancamentos.vendaID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN cliente ON cliente.clienteID = venda.clienteID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE lancamentos.data LIKE '").append(dataBusca).append("%' AND formID = '7' AND venda.clienteID = '").append(clienteID).append("'").toString();
         return pesquisa;
     }
 
     public String dividasQuitadas(String dataBusca, String clienteID)
     {
         String pesquisa = "SELECT venda.vendaID, venda.clienteID, venda.data AS dataVenda, cliente.clienteID, cliente.clienteNomeFantasia, lancamentos.* ";
-        pesquisa = pesquisa + "FROM lancamentos INNER JOIN venda ON venda.vendaID = lancamentos.vendaID ";
-        pesquisa = pesquisa + "INNER JOIN cliente ON cliente.clienteID = venda.clienteID ";
-        pesquisa = pesquisa + "WHERE lancamentos.data LIKE '" + dataBusca + "%' AND formID = '7' AND venda.clienteID = '" + clienteID + "'";
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("FROM lancamentos INNER JOIN venda ON venda.vendaID = lancamentos.vendaID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("INNER JOIN cliente ON cliente.clienteID = venda.clienteID ").toString();
+        pesquisa = (new StringBuilder(String.valueOf(pesquisa))).append("WHERE lancamentos.data LIKE '").append(dataBusca).append("%' AND formID = '7' AND venda.clienteID = '").append(clienteID).append("'").toString();
         return pesquisa;
     }
 
@@ -148,41 +148,41 @@ public class Lancamentos
     public String somaLancamentos(int lancamentoInicio, int lancamentoFim)
     {
         String soma = "SELECT SUM(valor) as totalLancamentos FROM lancamentos ";
-        soma = soma + "WHERE lancamentoID BETWEEN '" + lancamentoInicio + "' AND '" + lancamentoFim + "' ";
-        soma = soma + "AND formID = '7' AND livroID = '1' AND tipo = 'R' AND usuario = '" + usuario.login + "' ";
-        soma = soma + "OR formID = '6' AND livroID = '1' AND tipo = 'R' AND usuario = '" + usuario.login + "' ";
-        soma = soma + "OR formID = '5' AND livroID = '1' AND tipo = 'R' AND usuario = '" + usuario.login + "' ";
-        soma = soma + "OR formID = '4' AND livroID = '1' AND tipo = 'R' AND usuario = '" + usuario.login + "'";
+        soma = (new StringBuilder(String.valueOf(soma))).append("WHERE lancamentoID BETWEEN '").append(lancamentoInicio).append("' AND '").append(lancamentoFim).append("' ").toString();
+        soma = (new StringBuilder(String.valueOf(soma))).append("AND formID = '7' AND livroID = '1' AND tipo = 'R' AND usuario = '").append(usuario.login).append("' ").toString();
+        soma = (new StringBuilder(String.valueOf(soma))).append("OR formID = '6' AND livroID = '1' AND tipo = 'R' AND usuario = '").append(usuario.login).append("' ").toString();
+        soma = (new StringBuilder(String.valueOf(soma))).append("OR formID = '5' AND livroID = '1' AND tipo = 'R' AND usuario = '").append(usuario.login).append("' ").toString();
+        soma = (new StringBuilder(String.valueOf(soma))).append("OR formID = '4' AND livroID = '1' AND tipo = 'R' AND usuario = '").append(usuario.login).append("'").toString();
         return soma;
     }
 
     public String somaLancamentosCheque(int lancamentoInicio, int lancamentoFim)
     {
         String soma = "SELECT receber.receberID, receber.formID, receber.status, ";
-        soma = soma + "SUM(lancamentos.valor) as totalLancamentos, lancamentos.receberID ";
-        soma = soma + "FROM lancamentos ";
-        soma = soma + "INNER JOIN receber ON receber.receberID = lancamentos.receberID ";
-        soma = soma + "WHERE lancamentos.formID = '7' AND receber.formID = '4' ";
-        soma = soma + "AND lancamentos.lancamentoID BETWEEN '" + lancamentoInicio + "' AND '" + lancamentoFim + "' ";
-        soma = soma + "AND lancamentos.usuario = '" + usuario.login + "'";
+        soma = (new StringBuilder(String.valueOf(soma))).append("SUM(lancamentos.valor) as totalLancamentos, lancamentos.receberID ").toString();
+        soma = (new StringBuilder(String.valueOf(soma))).append("FROM lancamentos ").toString();
+        soma = (new StringBuilder(String.valueOf(soma))).append("INNER JOIN receber ON receber.receberID = lancamentos.receberID ").toString();
+        soma = (new StringBuilder(String.valueOf(soma))).append("WHERE lancamentos.formID = '7' AND receber.formID = '4' ").toString();
+        soma = (new StringBuilder(String.valueOf(soma))).append("AND lancamentos.lancamentoID BETWEEN '").append(lancamentoInicio).append("' AND '").append(lancamentoFim).append("' ").toString();
+        soma = (new StringBuilder(String.valueOf(soma))).append("AND lancamentos.usuario = '").append(usuario.login).append("'").toString();
         return soma;
     }
 
     public String contasRecebidas()
     {
         String busca = "SELECT livrocaixa.livroID, livrocaixa.banco, lancamentos.* ";
-        busca = busca + "FROM lancamentos ";
-        busca = busca + "INNER JOIN livrocaixa ON livrocaixa.livroID = lancamentos.livroID ";
-        busca = busca + "WHERE receberID = '" + receber.receberID + "'";
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM lancamentos ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN livrocaixa ON livrocaixa.livroID = lancamentos.livroID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE receberID = '").append(receber.receberID).append("'").toString();
         return busca;
     }
 
     public String contasPagas()
     {
         String busca = "SELECT livrocaixa.livroID, livrocaixa.banco, lancamentos.* ";
-        busca = busca + "FROM lancamentos ";
-        busca = busca + "INNER JOIN livrocaixa ON livrocaixa.livroID = lancamentos.livroID ";
-        busca = busca + "WHERE pagarID = '" + pagar.pagarID + "'";
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM lancamentos ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN livrocaixa ON livrocaixa.livroID = lancamentos.livroID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE pagarID = '").append(pagar.pagarID).append("'").toString();
         return busca;
     }
 

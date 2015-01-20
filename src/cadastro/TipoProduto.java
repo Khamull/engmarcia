@@ -25,45 +25,45 @@ public class TipoProduto
 
     public String tipoPorId()
     {
-        return "SELECT * FROM tipoproduto WHERE tipoprodutoID = '" + tipoProdutoID + "'";
+        return (new StringBuilder("SELECT * FROM tipoproduto WHERE tipoprodutoID = '")).append(tipoProdutoID).append("'").toString();
     }
 
     public String tipoPorNome()
     {
-        return "SELECT * FROM tipoproduto WHERE tipo = '" + tipo + "'";
+        return (new StringBuilder("SELECT * FROM tipoproduto WHERE tipo = '")).append(tipo).append("'").toString();
     }
 
     public String tipoPorNomeEditar()
     {
-        return "SELECT * FROM tipoproduto WHERE tipo = '" + tipo + "' AND tipoprodutoID <> '" + tipoProdutoID + "'";
+        return (new StringBuilder("SELECT * FROM tipoproduto WHERE tipo = '")).append(tipo).append("' AND tipoprodutoID <> '").append(tipoProdutoID).append("'").toString();
     }
 
     public String pesquisaTipos(String keyWord)
     {
-        return "SELECT * FROM tipoproduto WHERE tipo LIKE '%" + keyWord + "%'";
+        return (new StringBuilder("SELECT * FROM tipoproduto WHERE tipo LIKE '%")).append(keyWord).append("%'").toString();
     }
 
     public String salvaTipo()
     {
-        return "INSERT INTO tipoproduto (tipo) VALUES ('" + tipo + "')";
+        return (new StringBuilder("INSERT INTO tipoproduto (tipo) VALUES ('")).append(tipo).append("')").toString();
     }
 
     public String alteraTipo()
     {
-        return "UPDATE tipoproduto SET tipo = '" + tipo + "' WHERE tipoprodutoID = '" + tipoProdutoID + "'";
+        return (new StringBuilder("UPDATE tipoproduto SET tipo = '")).append(tipo).append("' WHERE tipoprodutoID = '").append(tipoProdutoID).append("'").toString();
     }
 
     public String excluiTipo()
     {
-        return "DELETE FROM tipoproduto WHERE tipoprodutoID = '" + tipoProdutoID + "'";
+        return (new StringBuilder("DELETE FROM tipoproduto WHERE tipoprodutoID = '")).append(tipoProdutoID).append("'").toString();
     }
 
     public String statusTipo(int numeroAcao)
     {
         if(numeroAcao == 1)
-            return "UPDATE tipoproduto SET tipoAtivo = 'N' WHERE tipoprodutoID = '" + tipoProdutoID + "'";
+            return (new StringBuilder("UPDATE tipoproduto SET tipoAtivo = 'N' WHERE tipoprodutoID = '")).append(tipoProdutoID).append("'").toString();
         if(numeroAcao == 2)
-            return "UPDATE tipoproduto SET tipoAtivo = 'S' WHERE tipoprodutoID = '" + tipoProdutoID + "'";
+            return (new StringBuilder("UPDATE tipoproduto SET tipoAtivo = 'S' WHERE tipoprodutoID = '")).append(tipoProdutoID).append("'").toString();
         else
             return null;
     }

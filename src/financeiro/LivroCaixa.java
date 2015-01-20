@@ -25,22 +25,22 @@ public class LivroCaixa
 
     public String pesquisaBancoPorNomeEditar()
     {
-        return "SELECT * FROM livrocaixa WHERE banco = '" + banco + "' AND livroID <> '" + livroID + "'";
+        return (new StringBuilder("SELECT * FROM livrocaixa WHERE banco = '")).append(banco).append("' AND livroID <> '").append(livroID).append("'").toString();
     }
 
     public String pesquisaBancoPorNome()
     {
-        return "SELECT * FROM livrocaixa WHERE banco = '" + banco + "'";
+        return (new StringBuilder("SELECT * FROM livrocaixa WHERE banco = '")).append(banco).append("'").toString();
     }
 
     public String bancoPorID()
     {
-        return "SELECT * FROM livrocaixa WHERE livroID = '" + livroID + "'";
+        return (new StringBuilder("SELECT * FROM livrocaixa WHERE livroID = '")).append(livroID).append("'").toString();
     }
 
     public String saldoEmCaixa()
     {
-        return "SELECT saldo FROM livrocaixa WHERE livroID = '" + livroID + "'";
+        return (new StringBuilder("SELECT saldo FROM livrocaixa WHERE livroID = '")).append(livroID).append("'").toString();
     }
 
     public String saldoTotal()
@@ -56,26 +56,26 @@ public class LivroCaixa
     public String cadastraBanco()
     {
         String cadastra = "INSERT INTO livrocaixa (banco, descricao, valorInicial, dataInicio, saldo) ";
-        cadastra = cadastra + "VALUES ('" + banco + "', '" + descricao + "', '" + valorInicial + "', '" + dataInicio + "', '" + valorInicial + "')";
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("VALUES ('").append(banco).append("', '").append(descricao).append("', '").append(valorInicial).append("', '").append(dataInicio).append("', '").append(valorInicial).append("')").toString();
         return cadastra;
     }
 
     public String atualizaSaldo()
     {
-        return "UPDATE livrocaixa SET saldo = '" + saldo + "' WHERE livroID = '" + livroID + "'";
+        return (new StringBuilder("UPDATE livrocaixa SET saldo = '")).append(saldo).append("' WHERE livroID = '").append(livroID).append("'").toString();
     }
 
     public String alteraBanco()
     {
-        return "UPDATE livrocaixa SET banco = '" + banco + "', descricao = '" + descricao + "' WHERE livroID = '" + livroID + "'";
+        return (new StringBuilder("UPDATE livrocaixa SET banco = '")).append(banco).append("', descricao = '").append(descricao).append("' WHERE livroID = '").append(livroID).append("'").toString();
     }
 
     public String statusBanco(int numeroAcao)
     {
         if(numeroAcao == 1)
-            return "UPDATE livrocaixa SET status = 'N' WHERE livroID = '" + livroID + "'";
+            return (new StringBuilder("UPDATE livrocaixa SET status = 'N' WHERE livroID = '")).append(livroID).append("'").toString();
         if(numeroAcao == 2)
-            return "UPDATE livrocaixa SET status = 'S' WHERE livroID = '" + livroID + "'";
+            return (new StringBuilder("UPDATE livrocaixa SET status = 'S' WHERE livroID = '")).append(livroID).append("'").toString();
         else
             return null;
     }

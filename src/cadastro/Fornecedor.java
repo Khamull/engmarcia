@@ -31,12 +31,12 @@ public class Fornecedor
 
     public String fornecedorPorID()
     {
-        return "SELECT * FROM fornecedor WHERE fornecedorID = '" + fornecedorID + "'";
+        return (new StringBuilder("SELECT * FROM fornecedor WHERE fornecedorID = '")).append(fornecedorID).append("'").toString();
     }
 
     public String pesquisaFornecedor(String keyWord)
     {
-        return "SELECT * FROM fornecedor WHERE fornAtivo = 'S' AND fornNomeFantasia LIKE '%" + keyWord + "%' ORDER BY fornecedorID DESC";
+        return (new StringBuilder("SELECT * FROM fornecedor WHERE fornAtivo = 'S' AND fornNomeFantasia LIKE '%")).append(keyWord).append("%' ORDER BY fornecedorID DESC").toString();
     }
 
     public String listaFornecedoresOrdenados()
@@ -46,67 +46,67 @@ public class Fornecedor
 
     public String verificaCnpj()
     {
-        return "SELECT fornCnpj FROM fornecedor WHERE fornCnpj = '" + cnpj + "'";
+        return (new StringBuilder("SELECT fornCnpj FROM fornecedor WHERE fornCnpj = '")).append(cnpj).append("'").toString();
     }
 
     public String verificaCnpjAlterar()
     {
-        return "SELECT fornCnpj FROM fornecedor WHERE fornCnpj = '" + cnpj + "' AND fornecedorID <> '" + fornecedorID + "'";
+        return (new StringBuilder("SELECT fornCnpj FROM fornecedor WHERE fornCnpj = '")).append(cnpj).append("' AND fornecedorID <> '").append(fornecedorID).append("'").toString();
     }
 
     public String salvarFornecedor()
     {
         String salvaCli = "INSERT INTO fornecedor (fornNomeFantasia, fornRazaoSocial, fornCnpj, fornInscEstadual, ";
-        salvaCli = salvaCli + "fornInscMunicipal, fornEndereco, fornNumero, fornBairro, fornCep, fornCidade, fornUf, ";
-        salvaCli = salvaCli + "fornComplemento, fornContato, fornTelefone, fornFax, fornRadio, fornCelular, operadoraCelular, ";
-        salvaCli = salvaCli + "fornEmail, fornSite, fornUsuario, empresaID) VALUES ('" + nomeFantasia + "', '" + razaoSocial + "', ";
-        salvaCli = salvaCli + "'" + cnpj + "', '" + inscEstadual + "', '" + inscMunicipal + "', '" + endereco.logradouro + "', '" + endereco.numero + "', ";
-        salvaCli = salvaCli + "'" + endereco.bairro + "', '" + endereco.cep + "', '" + endereco.cidade + "', '" + endereco.uf + "', '" + endereco.complemento + "', ";
-        salvaCli = salvaCli + "'" + contato + "', '" + telefone + "', '" + fax + "', '" + radio + "', '" + celular + "', ";
-        salvaCli = salvaCli + "'" + operadoraCelular + "', '" + email + "', '" + site + "', '" + usuario + "', '" + empresa.empresaID + "')";
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("fornInscMunicipal, fornEndereco, fornNumero, fornBairro, fornCep, fornCidade, fornUf, ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("fornComplemento, fornContato, fornTelefone, fornFax, fornRadio, fornCelular, operadoraCelular, ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("fornEmail, fornSite, fornUsuario, empresaID) VALUES ('").append(nomeFantasia).append("', '").append(razaoSocial).append("', ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("'").append(cnpj).append("', '").append(inscEstadual).append("', '").append(inscMunicipal).append("', '").append(endereco.logradouro).append("', '").append(endereco.numero).append("', ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("'").append(endereco.bairro).append("', '").append(endereco.cep).append("', '").append(endereco.cidade).append("', '").append(endereco.uf).append("', '").append(endereco.complemento).append("', ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("'").append(contato).append("', '").append(telefone).append("', '").append(fax).append("', '").append(radio).append("', '").append(celular).append("', ").toString();
+        salvaCli = (new StringBuilder(String.valueOf(salvaCli))).append("'").append(operadoraCelular).append("', '").append(email).append("', '").append(site).append("', '").append(usuario).append("', '").append(empresa.empresaID).append("')").toString();
         return salvaCli;
     }
 
     public String alteraFornecedor()
     {
         String editaForn = "UPDATE  fornecedor SET  ";
-        editaForn = editaForn + "fornNomeFantasia =  '" + nomeFantasia + "', ";
-        editaForn = editaForn + "fornRazaoSocial =  '" + razaoSocial + "', ";
-        editaForn = editaForn + "fornCnpj =  '" + cnpj + "', ";
-        editaForn = editaForn + "fornInscEstadual =  '" + inscEstadual + "', ";
-        editaForn = editaForn + "fornInscMunicipal =  '" + inscMunicipal + "', ";
-        editaForn = editaForn + "fornEndereco =  '" + endereco.logradouro + "', ";
-        editaForn = editaForn + "fornNumero =  '" + endereco.numero + "', ";
-        editaForn = editaForn + "fornBairro =  '" + endereco.bairro + "', ";
-        editaForn = editaForn + "fornCep =  '" + endereco.cep + "', ";
-        editaForn = editaForn + "fornCidade =  '" + endereco.cidade + "', ";
-        editaForn = editaForn + "fornUf =  '" + endereco.uf + "', ";
-        editaForn = editaForn + "fornComplemento =  '" + endereco.complemento + "', ";
-        editaForn = editaForn + "fornContato =  '" + contato + "', ";
-        editaForn = editaForn + "fornTelefone =  '" + telefone + "', ";
-        editaForn = editaForn + "fornFax =  '" + fax + "', ";
-        editaForn = editaForn + "fornRadio =  '" + radio + "', ";
-        editaForn = editaForn + "fornCelular =  '" + celular + "', ";
-        editaForn = editaForn + "operadoraCelular =  '" + operadoraCelular + "', ";
-        editaForn = editaForn + "fornEmail =  '" + email + "', ";
-        editaForn = editaForn + "fornSite =  '" + site + "', ";
-        editaForn = editaForn + "fornUsuario =  '" + usuario.nome + "', ";
-        editaForn = editaForn + "empresaID = '" + empresa.empresaID + "' ";
-        editaForn = editaForn + "WHERE  fornecedorID = '" + fornecedorID + "'";
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornNomeFantasia =  '").append(nomeFantasia).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornRazaoSocial =  '").append(razaoSocial).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornCnpj =  '").append(cnpj).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornInscEstadual =  '").append(inscEstadual).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornInscMunicipal =  '").append(inscMunicipal).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornEndereco =  '").append(endereco.logradouro).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornNumero =  '").append(endereco.numero).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornBairro =  '").append(endereco.bairro).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornCep =  '").append(endereco.cep).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornCidade =  '").append(endereco.cidade).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornUf =  '").append(endereco.uf).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornComplemento =  '").append(endereco.complemento).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornContato =  '").append(contato).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornTelefone =  '").append(telefone).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornFax =  '").append(fax).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornRadio =  '").append(radio).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornCelular =  '").append(celular).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("operadoraCelular =  '").append(operadoraCelular).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornEmail =  '").append(email).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornSite =  '").append(site).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("fornUsuario =  '").append(usuario.nome).append("', ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("empresaID = '").append(empresa.empresaID).append("' ").toString();
+        editaForn = (new StringBuilder(String.valueOf(editaForn))).append("WHERE  fornecedorID = '").append(fornecedorID).append("'").toString();
         return editaForn;
     }
 
     public String excluirFornecedor()
     {
-        return "DELETE FROM fornecedor WHERE fornecedorID = '" + fornecedorID + "'";
+        return (new StringBuilder("DELETE FROM fornecedor WHERE fornecedorID = '")).append(fornecedorID).append("'").toString();
     }
 
     public String statusFornecedor(int numeroAcao)
     {
         if(numeroAcao == 1)
-            return "UPDATE fornecedor SET fornAtivo = 'N' WHERE fornecedorID = '" + fornecedorID + "'";
+            return (new StringBuilder("UPDATE fornecedor SET fornAtivo = 'N' WHERE fornecedorID = '")).append(fornecedorID).append("'").toString();
         if(numeroAcao == 2)
-            return "UPDATE fornecedor SET fornAtivo = 'S' WHERE fornecedorID = '" + fornecedorID + "'";
+            return (new StringBuilder("UPDATE fornecedor SET fornAtivo = 'S' WHERE fornecedorID = '")).append(fornecedorID).append("'").toString();
         else
             return null;
     }

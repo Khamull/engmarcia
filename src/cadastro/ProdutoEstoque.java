@@ -20,23 +20,23 @@ public class ProdutoEstoque
 
     public String pesquisaEstoque()
     {
-        return "SELECT * FROM produtoestoque WHERE produtoID = '" + produto.produtoID + "' AND empresaID = '" + empresa.empresaID + "'";
+        return (new StringBuilder("SELECT * FROM produtoestoque WHERE produtoID = '")).append(produto.produtoID).append("' AND empresaID = '").append(empresa.empresaID).append("'").toString();
     }
 
     public String salvaQuantidade()
     {
         String salvaQtdd = "INSERT INTO produtoestoque ";
-        salvaQtdd = salvaQtdd + "(produtoID, empresaID, quantidade) ";
-        salvaQtdd = salvaQtdd + "VALUES ";
-        salvaQtdd = salvaQtdd + "('" + produto.produtoID + "', '" + empresa.empresaID + "', '" + quantidade + "')";
+        salvaQtdd = (new StringBuilder(String.valueOf(salvaQtdd))).append("(produtoID, empresaID, quantidade) ").toString();
+        salvaQtdd = (new StringBuilder(String.valueOf(salvaQtdd))).append("VALUES ").toString();
+        salvaQtdd = (new StringBuilder(String.valueOf(salvaQtdd))).append("('").append(produto.produtoID).append("', '").append(empresa.empresaID).append("', '").append(quantidade).append("')").toString();
         return salvaQtdd;
     }
 
     public String alteraEstoque()
     {
         String alteraQtdd = "UPDATE produtoestoque SET ";
-        alteraQtdd = alteraQtdd + "quantidade = '" + quantidade + "' ";
-        alteraQtdd = alteraQtdd + "WHERE produtoID = '" + produto.produtoID + "' AND empresaID = '" + empresa.empresaID + "'";
+        alteraQtdd = (new StringBuilder(String.valueOf(alteraQtdd))).append("quantidade = '").append(quantidade).append("' ").toString();
+        alteraQtdd = (new StringBuilder(String.valueOf(alteraQtdd))).append("WHERE produtoID = '").append(produto.produtoID).append("' AND empresaID = '").append(empresa.empresaID).append("'").toString();
         return alteraQtdd;
     }
 

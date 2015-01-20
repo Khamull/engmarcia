@@ -21,54 +21,54 @@ public class RetiradasEstoque
 
     public String retiradasPorProdutoID()
     {
-        return "SELECT * FROM retiradasestoque WHERE produtoID = '" + produto.produtoID + "'";
+        return (new StringBuilder("SELECT * FROM retiradasestoque WHERE produtoID = '")).append(produto.produtoID).append("'").toString();
     }
 
     public String retiradasEntreDatas(String dataInicio, String dataFim)
     {
         String busca = "SELECT * FROM retiradasestoque ";
-        busca = busca + "WHERE produtoID = '" + produto.produtoID + "' ";
-        busca = busca + "AND data BETWEEN '" + dataInicio + "' AND '" + dataFim + " 23:59:59" + "'";
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE produtoID = '").append(produto.produtoID).append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("AND data BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append(" 23:59:59").append("'").toString();
         return busca;
     }
 
     public String retiradasEntreDatasDetalhada(String dataInicio, String dataFim)
     {
         String busca = "SELECT usuario.usuarioID, usuario.usuarioLogin, usuario.usuarioNome, retiradasestoque.* ";
-        busca = busca + "FROM retiradasestoque ";
-        busca = busca + "LEFT JOIN usuario ON usuario.usuarioID = retiradasestoque.usuario ";
-        busca = busca + "WHERE retiradasestoque.produtoID = '" + produto.produtoID + "' ";
-        busca = busca + "AND retiradasestoque.data BETWEEN '" + dataInicio + "' AND '" + dataFim + " 23:59:59" + "' ";
-        busca = busca + "GROUP BY retiradasestoque.retiradaID ";
-        busca = busca + "ORDER BY retiradasestoque.data DESC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM retiradasestoque ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("LEFT JOIN usuario ON usuario.usuarioID = retiradasestoque.usuario ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE retiradasestoque.produtoID = '").append(produto.produtoID).append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("AND retiradasestoque.data BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append(" 23:59:59").append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("GROUP BY retiradasestoque.retiradaID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY retiradasestoque.data DESC").toString();
         return busca;
     }
 
     public String retiradasEntreDatasRelatorio(String dataInicio, String dataFim)
     {
         String busca = "SELECT usuario.usuarioID, usuario.usuarioLogin, usuario.usuarioNome, produto.produtoID, produto.nome, produto.unidade, retiradasestoque.* ";
-        busca = busca + "FROM retiradasestoque ";
-        busca = busca + "LEFT JOIN usuario ON usuario.usuarioID = retiradasestoque.usuario ";
-        busca = busca + "INNER JOIN produto ON produto.produtoID = retiradasestoque.produtoID  ";
-        busca = busca + "WHERE retiradasestoque.data BETWEEN '" + dataInicio + "' AND '" + dataFim + " 23:59:59" + "' ";
-        busca = busca + "GROUP BY retiradasestoque.retiradaID ";
-        busca = busca + "ORDER BY retiradasestoque.data ASC";
+        busca = (new StringBuilder(String.valueOf(busca))).append("FROM retiradasestoque ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("LEFT JOIN usuario ON usuario.usuarioID = retiradasestoque.usuario ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("INNER JOIN produto ON produto.produtoID = retiradasestoque.produtoID  ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE retiradasestoque.data BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append(" 23:59:59").append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("GROUP BY retiradasestoque.retiradaID ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("ORDER BY retiradasestoque.data ASC").toString();
         return busca;
     }
 
     public String quantidadeRetirada(String dataInicio, String dataFim)
     {
         String busca = "SELECT SUM(quantidade) as totalRetirada FROM retiradasestoque ";
-        busca = busca + "WHERE produtoID = '" + produto.produtoID + "' ";
-        busca = busca + "AND data BETWEEN '" + dataInicio + "' AND '" + dataFim + "'";
+        busca = (new StringBuilder(String.valueOf(busca))).append("WHERE produtoID = '").append(produto.produtoID).append("' ").toString();
+        busca = (new StringBuilder(String.valueOf(busca))).append("AND data BETWEEN '").append(dataInicio).append("' AND '").append(dataFim).append("'").toString();
         return busca;
     }
 
     public String cadastraRetirada()
     {
         String cadastra = "INSERT INTO retiradasestoque ";
-        cadastra = cadastra + "(produtoID, quantidade, motivo, usuario, empresaID) VALUES";
-        cadastra = cadastra + "('" + produto.produtoID + "', '" + quantidade + "', '" + motivo + "', '" + usuario.login + "', '" + empresa.empresaID + "')";
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("(produtoID, quantidade, motivo, usuario, empresaID) VALUES").toString();
+        cadastra = (new StringBuilder(String.valueOf(cadastra))).append("('").append(produto.produtoID).append("', '").append(quantidade).append("', '").append(motivo).append("', '").append(usuario.login).append("', '").append(empresa.empresaID).append("')").toString();
         return cadastra;
     }
 
